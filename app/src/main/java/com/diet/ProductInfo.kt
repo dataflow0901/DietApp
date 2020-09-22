@@ -31,8 +31,8 @@ class ProductInfo : AppCompatActivity() {
 
     //private var companyName = ""
     var salesStandCode = ""
-
     var productCode = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -52,6 +52,7 @@ class ProductInfo : AppCompatActivity() {
 
         if (intent.hasExtra("salesStandCode")) {
             salesStandCode = intent.getStringExtra("salesStandCode")
+            productCode = intent.getStringExtra("productCode")
             getProductList()
 
         } else {
@@ -93,11 +94,13 @@ class ProductInfo : AppCompatActivity() {
         val product = ProductDTO()
 
         Log.d("salesStandCode" ,  salesStandCode)
+        Log.d("productCode" ,  productCode)
         product.salesStandCode = salesStandCode
+        product.productCode = productCode
 
 
         val res: Call<JsonObject> =
-            ProductApiRetrofit.getInstance(this).service.getProductList(product)
+            ProductApiRetrofit.getInstance(this).service.getProduct(product)
         res.enqueue(object : Callback<JsonObject?> {
             @SuppressLint("LongLogTag")
             override fun onResponse(call: Call<JsonObject?>, response: Response<JsonObject?>) {

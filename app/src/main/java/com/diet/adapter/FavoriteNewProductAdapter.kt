@@ -58,6 +58,7 @@ class Holder(itemView: View, context: Context) :
         itemView.setOnClickListener {
             val intent = Intent(context, ProductInfo::class.java)
             intent.putExtra("salesStandCode",productList.salesStandCode)
+            intent.putExtra("productCode",productList.productCode)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
             startActivity(context, intent, Bundle())
         }

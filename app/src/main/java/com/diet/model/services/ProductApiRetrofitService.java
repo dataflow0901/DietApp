@@ -29,5 +29,12 @@ public interface ProductApiRetrofitService {
     @POST("getProductList")
     Call<JsonObject> getProductList(@Body ProductDTO product);
 
+
+    @Headers("Content-Type: application/json")
+    @POST("getProduct")
+    Call<JsonObject> getProduct(@Body ProductDTO product);
+
+
+
 }
  

@@ -33,10 +33,11 @@ public class Utils {
         String server = "http://112.217.209.162:9090";
         String SYURL = "http://192.168.0.8:9090";
         String JGURL = "http://192.168.0.3:9090";
+        String WCURL = "http://192.168.0.4:9090";
 
         String SYURL2 = "http://192.168.219.102:9090";
 
-        return  SYURL ;
+        return  WCURL ;
     }
 
 

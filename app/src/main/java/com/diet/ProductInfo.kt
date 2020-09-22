@@ -8,6 +8,7 @@ package com.diet
 
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,7 @@ class ProductInfo : AppCompatActivity() {
     //var companyName = ""
 
     //private var companyName = ""
+    var salesStandCode = ""
 
     var productCode = ""
 
@@ -37,8 +39,6 @@ class ProductInfo : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
-
-        intent = intent;
 
 //        productName.text = intent.getStringExtra("productName")
 //        companyName.text = intent.getStringExtra("companyName")
@@ -50,7 +50,14 @@ class ProductInfo : AppCompatActivity() {
 //
 //
 
-        getProductList()
+        if (intent.hasExtra("salesStandCode")) {
+            salesStandCode = intent.getStringExtra("salesStandCode")
+            getProductList()
+
+        } else {
+            salesStandCode = "NEW_PROD1"
+            getProductList()
+        }
 
 
 /*
@@ -81,11 +88,13 @@ class ProductInfo : AppCompatActivity() {
     }
 
 
-
     private fun getProductList() {
+
         val product = ProductDTO()
 
-        product.salesStandCode = "NEW_PROD1"
+        Log.d("salesStandCode" ,  salesStandCode)
+        product.salesStandCode = salesStandCode
+
 
         val res: Call<JsonObject> =
             ProductApiRetrofit.getInstance(this).service.getProductList(product)
@@ -107,7 +116,8 @@ class ProductInfo : AppCompatActivity() {
                         gpa.text = json.getAsJsonPrimitive("gpa")!!.asInt.toString()
                         ranking.text = json.getAsJsonPrimitive("ranking")!!.asInt.toString()
                         review.text = json.getAsJsonPrimitive("review")!!.asInt.toString()
-                        deliveryCost.text = json.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()
+                        deliveryCost.text =
+                            json.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()
 
                     }
 

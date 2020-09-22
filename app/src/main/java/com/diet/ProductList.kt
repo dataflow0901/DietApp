@@ -1,53 +1,31 @@
 package com.diet
 
 
-import android.content.ContentProvider
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.diet.adapter.ProductListAdapter
-import com.diet.fragmentView.*
 import com.diet.model.ProductDTO
 import com.diet.model.retrofits.ProductApiRetrofit
 import com.google.gson.JsonObject
-import com.diet.utils.Utils
 //import com.blildo.views.fragmentView.LentCertificateFragment
 //import com.blildo.views.fragmentView.BorrowedCertificateFragment
 //import com.blildo.views.fragmentView.ManagementFragment
 //import com.blildo.views.fragmentView.HomeFragment
 //import com.blildo.views.hambuger.Hamburger
-import kotlinx.android.synthetic.main.activity_home.*
-import org.jetbrains.anko.textColor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
 
 
-import kotlinx.android.synthetic.main.activity_product_list.*
-import com.diet.fragmentView.HomeFragment
-
-
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.diet.adapter.CustomAdapter
-
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_product_list.*
-import kotlinx.android.synthetic.main.fragment_status.*
-import kotlinx.android.synthetic.main.activity_product_list.listViewProductList
-import kotlinx.android.synthetic.main.item_product_list.*
 
 
 class ProductList() : AppCompatActivity() {
@@ -187,11 +165,11 @@ class ProductList() : AppCompatActivity() {
 
                     ////
                     recyclerView = findViewById(R.id.recyclerView)
-                    var adapter = CustomAdapter(applicationContext, accountList)                   // CustomaApdater() 를 저장하는 apdater 변수 생성
+                    var favoriteNewProductadapter = CustomAdapter(applicationContext, accountList)                   // CustomaApdater() 를 저장하는 apdater 변수 생성
                     val recyclerDecoration = RecyclerViewDecoration(20,5)
 
                     recyclerView.addItemDecoration(recyclerDecoration)
-                    recyclerView.adapter = adapter // CustomAdapter에 선언한 ProductList 변수에 data  변수 전달
+                    recyclerView.adapter = favoriteNewProductadapter // CustomAdapter에 선언한 ProductList 변수에 data  변수 전달
                     //ListView 형식을 위한 LinearLayoutManager\
                     recyclerView.layoutManager = GridLayoutManager(applicationContext,2)
 

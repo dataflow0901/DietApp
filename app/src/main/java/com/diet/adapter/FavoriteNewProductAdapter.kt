@@ -1,24 +1,28 @@
 package com.diet.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.diet.ProductInfo
 import com.diet.R
 import com.diet.model.ProductDTO
 import kotlinx.android.synthetic.main.item_product_list.view.*
 
-open class CustomAdapter(val context: Context, private val productList: ArrayList<ProductDTO>) : RecyclerView.Adapter<Holder>()
-
-
-{
+open class CustomAdapter(val context: Context, private val productList: ArrayList<ProductDTO>) :
+    RecyclerView.Adapter<Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         //레이아웃 생성
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_product_list,
-        parent, false)
-        return Holder(view)
+        val view = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_product_list,
+            parent, false
+        )
+        return Holder(view, context)
     }
 
 
@@ -26,6 +30,7 @@ open class CustomAdapter(val context: Context, private val productList: ArrayLis
         //리스트 아이템수
         return productList.size
     }
+
     override fun onBindViewHolder(holder: Holder, position: Int) {
         //데이터 삽입
         val data = productList[position]
@@ -34,8 +39,12 @@ open class CustomAdapter(val context: Context, private val productList: ArrayLis
 
 
 }
+
 //매개변수로 있는 아이템은 하나의 리스트 아이엩ㅁ을 아답터로부터 전달받는 변수
-class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){  // 뷰홀더를 사용하기위해 상속
+class Holder(itemView: View, context: Context) :
+    RecyclerView.ViewHolder(itemView) {  // 뷰홀더를 사용하기위해 상속
+
+    val context = context
     fun setListData(productList: ProductDTO) {
         itemView.companyName.text = productList.companyName
         itemView.productName.text = productList.productName
@@ -46,7 +55,13 @@ class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){  // 뷰홀더�
         itemView.review.text = productList.review.toString()
 
 
-
+        itemView.setOnClickListener {
+            val intent = Intent(context, ProductInfo::class.java)
+            intent.putExtra("salesStandCode",productList.salesStandCode)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+            startActivity(context, intent, Bundle())
+        }
     }
+
 
 }

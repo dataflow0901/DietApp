@@ -12,12 +12,14 @@ import android.widget.TextView
 import android.widget.ListView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.diet.R
 
 import com.diet.ProductInfo
 import com.diet.ProductList
 import com.diet.RecyclerViewDecoration
-import com.diet.adapter.CustomAdapter
+import com.diet.adapter.FavoriteNewProductAdapter
+import com.diet.adapter.HomeFavoriteNewProductAdapter
 import com.diet.adapter.ProductListAdapter
 import com.diet.model.ProductDTO
 import com.diet.model.retrofits.ProductApiRetrofit
@@ -38,7 +40,8 @@ import kotlinx.android.synthetic.main.activity_product_list.listViewProductList
 class HomeFragment : Fragment() {
 
     private lateinit var newProduct: TextView
-    private lateinit var newProduct1Name: TextView
+    private lateinit var newProductMore: TextView
+    private lateinit var recyclerViewNewFavoriteProduct: RecyclerView
 
     var new_product_company = ""
     var productNo = 0
@@ -46,10 +49,6 @@ class HomeFragment : Fragment() {
     var price = 0
     var product_name = ""
     var unit = ""
-
-    var salesStandCode = ""
-    var productCode = ""
-
     var accountList = arrayListOf<ProductDTO>()
 
 
@@ -58,20 +57,19 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_status, null)
 
         newProduct = view.findViewById(R.id.newProduct)
-        newProduct1Name = view.findViewById(R.id.newProduct1Name)
-
-        getProductList()
+        newProductMore = view.findViewById(R.id.newProductMore)
+        recyclerViewNewFavoriteProduct = view.findViewById(R.id.recyclerViewNewFavoriteProduct)
 
 
         // 인기 신제품 리스트
-        newProduct.setOnClickListener {
+        newProductMore.setOnClickListener {
             activity?.let {
 
                 val goNewProduct = Intent(it, ProductList::class.java)
@@ -79,24 +77,10 @@ class HomeFragment : Fragment() {
             }
         }
 
+        getProductList()
+
         // 인기 신제품
-        newProduct1Name.setOnClickListener {
-            activity?.let {
 
-                val goNewProduct1Name = Intent(it, ProductInfo::class.java)
-
-                //goNewProduct1Name.putExtra("companyName", newProduct1Name)
-
-                var salesStandCode = "NEW_PROD"
-                //var productCode = "PROD_001"
-                var standOrder = 1
-
-                goNewProduct1Name.putExtra("salesStandCode", salesStandCode)
-                goNewProduct1Name.putExtra("productCode", productCode)
-
-                it.startActivity(goNewProduct1Name)
-            }
-        }
 
         return view
     }
@@ -104,12 +88,7 @@ class HomeFragment : Fragment() {
 
 
     private fun getProductList() {
-//        Log.d("getCreditBillByPeriod userId", userId)
         val product = ProductDTO()
-
-        //certificate.applier = userId
-        //certificate.startDate = "2020-09-01"
-        //certificate.endDate = "2020-09-30"
 
         product.salesStandCode = "NEW_PROD"
 
@@ -130,7 +109,7 @@ class HomeFragment : Fragment() {
                     val result = response.body()!!.getAsJsonArray("result")
                     Log.d("ProductList result", result.toString())
 
-                    println("step ******************************************************** 00e");
+                    println("step ******************************************************** 00e")
 
 
                     for (j in result) {
@@ -153,16 +132,25 @@ class HomeFragment : Fragment() {
 
 
                         accountList.add(item)
-
-                        newProduct1Name.text = item.salesStandCode
+                        if(accountList.size == 3) {
+                            break
+                        }
 
                     }
 
+                    val homeFavoriteNewProductAdapter = HomeFavoriteNewProductAdapter(
+                        requireContext(),
+                        accountList
+                    )
 
-                    //textViewGetTotalAmount?.text =
-                    //    Utils.setDecimalFormat(loanTotalMoney.toString()) + "원"
+                    val recyclerDecoration = RecyclerViewDecoration(20, 5)
 
-                    ////
+                    recyclerViewNewFavoriteProduct.addItemDecoration(recyclerDecoration)
+                    recyclerViewNewFavoriteProduct.adapter =
+                        homeFavoriteNewProductAdapter
+                    recyclerViewNewFavoriteProduct.layoutManager = GridLayoutManager(requireContext(), 3)
+
+
 
 
 
@@ -189,7 +177,7 @@ class HomeFragment : Fragment() {
 
                 println("step ******************************************************** 00h");
 
-                Log.d("message", t.message )
+                Log.d("message", t.message)
 
                 t.message
 
@@ -199,13 +187,4 @@ class HomeFragment : Fragment() {
             }
         })
     }
-
-
-
-
-
-}
-
-private fun Intent.putExtra(s: String, newProduct1Name: TextView?) {
-
 }

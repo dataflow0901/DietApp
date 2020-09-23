@@ -17,7 +17,7 @@
 
 
         <ImageView
-            android:id="@+id/newProduct1Button"
+            android:id="@+id/imageView_product"
             android:layout_width="74dp"
             android:layout_height="97dp"
             android:src="@drawable/new_product1"
@@ -37,7 +37,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="11dp"
-            app:layout_constraintStart_toEndOf="@+id/newProduct1Button"
+            app:layout_constraintStart_toEndOf="@+id/imageView_product"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="1" />
 
@@ -50,7 +50,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15dp"
-            app:layout_constraintStart_toEndOf="@+id/newProduct1Button"
+            app:layout_constraintStart_toEndOf="@+id/imageView_product"
             app:layout_constraintTop_toBottomOf="@+id/companyName" />
 
         <TextView
@@ -62,7 +62,7 @@
             android:textAlignment="center"
             android:textColor="@color/orange"
             android:textSize="15dp"
-            app:layout_constraintStart_toEndOf="@+id/newProduct1Button"
+            app:layout_constraintStart_toEndOf="@+id/imageView_product"
             app:layout_constraintTop_toBottomOf="@+id/productName" />
 
 
@@ -90,7 +90,7 @@
             android:textColor="@color/black"
             android:textSize="15dp"
             app:layout_constraintRight_toRightOf="@+id/unit"
-            app:layout_constraintStart_toEndOf="@+id/newProduct1Button"
+            app:layout_constraintStart_toEndOf="@+id/imageView_product"
             app:layout_constraintTop_toBottomOf="@id/review" />
 
 

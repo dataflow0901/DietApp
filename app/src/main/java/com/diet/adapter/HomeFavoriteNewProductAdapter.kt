@@ -11,18 +11,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.diet.ProductInfo
 import com.diet.R
 import com.diet.model.ProductDTO
-import kotlinx.android.synthetic.main.item_product_list.view.*
+import kotlinx.android.synthetic.main.item_main_new_favorite_product.view.*
+class HomeFavoriteNewProductAdapter(val context: Context, private val productList: ArrayList<ProductDTO>) :
+    RecyclerView.Adapter<HomeFavoriteNewProductAdapterHolder>() {
 
-class FavoriteNewProductAdapter(val context: Context, private val productList: ArrayList<ProductDTO>) :
-    RecyclerView.Adapter<FavoriteNewProductAdapterHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteNewProductAdapterHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeFavoriteNewProductAdapterHolder {
         //레이아웃 생성
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_product_list,
+            R.layout.item_main_new_favorite_product,
             parent, false
         )
-        return FavoriteNewProductAdapterHolder(view, context)
+        return HomeFavoriteNewProductAdapterHolder(view, context)
     }
 
 
@@ -31,7 +30,7 @@ class FavoriteNewProductAdapter(val context: Context, private val productList: A
         return productList.size
     }
 
-    override fun onBindViewHolder(holder: FavoriteNewProductAdapterHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomeFavoriteNewProductAdapterHolder, position: Int) {
         //데이터 삽입
         val data = productList[position]
         holder.setListData(data)
@@ -41,18 +40,13 @@ class FavoriteNewProductAdapter(val context: Context, private val productList: A
 }
 
 //매개변수로 있는 아이템은 하나의 리스트 아이엩ㅁ을 아답터로부터 전달받는 변수
-class FavoriteNewProductAdapterHolder(itemView: View, context: Context) :
+class HomeFavoriteNewProductAdapterHolder(itemView: View, context: Context) :
     RecyclerView.ViewHolder(itemView) {  // 뷰홀더를 사용하기위해 상속
 
     val context = context
     fun setListData(productList: ProductDTO) {
-        itemView.companyName.text = productList.companyName
-        itemView.productName.text = productList.productName
-        itemView.qty.text = productList.qty.toString()
-        itemView.price.text = productList.price.toString()
-        itemView.unit.text = productList.unit
-        itemView.gpa.text = productList.gpa.toString()
-        itemView.review.text = productList.review.toString()
+        itemView.textView_company_name.text = productList.companyName
+        itemView.textView_product_name.text = productList.productName
 
 
         itemView.setOnClickListener {

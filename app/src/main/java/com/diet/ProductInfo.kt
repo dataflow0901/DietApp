@@ -67,27 +67,20 @@ class ProductInfo : AppCompatActivity() {
         val res: Call<JsonObject> =
             ProductApiRetrofit.getInstance(this).service.getProduct(product)
         res.enqueue(object : Callback<JsonObject?> {
-            @SuppressLint("LongLogTag")
             override fun onResponse(call: Call<JsonObject?>, response: Response<JsonObject?>) {
                 Log.d("response.toString()", response.toString())
-                Log.d("response.body.toString()", response.body().toString())
 
                 if (response.isSuccessful) {
-                    val result = response.body()!!.getAsJsonArray("result")
+                    val result = response.body()?.getAsJsonObject("result")
 
-                    Log.d("response.body.getAsJsonArray.toString", result.toString())
-                    for (j in result) {
-                        val json = j.asJsonObject
-                        productName.text = json.getAsJsonPrimitive("productName")!!.asString
-                        companyName.text = json.getAsJsonPrimitive("companyName")!!.asString
-                        price.text = json.getAsJsonPrimitive("price")!!.asInt.toString()
-                        gpa.text = json.getAsJsonPrimitive("gpa")!!.asInt.toString()
-                        ranking.text = json.getAsJsonPrimitive("ranking")!!.asInt.toString()
-                        review.text = json.getAsJsonPrimitive("review")!!.asInt.toString()
-                        deliveryCost.text =
-                            json.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()
+                        productName.text = result?.getAsJsonPrimitive("productName")!!.asString
+                        companyName.text = result?.getAsJsonPrimitive("companyName")!!.asString
+                        price.text = result?.getAsJsonPrimitive("price")!!.asInt.toString()
+                        gpa.text = result?.getAsJsonPrimitive("gpa")!!.asInt.toString()
+                        ranking.text = result?.getAsJsonPrimitive("ranking")!!.asInt.toString()
+                        review.text = result?.getAsJsonPrimitive("review")!!.asInt.toString()
+                        deliveryCost.text = result?.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()
 
-                    }
 
 
                 } else {

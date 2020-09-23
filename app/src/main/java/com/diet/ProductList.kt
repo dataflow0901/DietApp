@@ -25,7 +25,7 @@ import java.io.IOException
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.diet.adapter.CustomAdapter
+import com.diet.adapter.FavoriteNewProductAdapter
 
 
 class ProductList() : AppCompatActivity() {
@@ -165,7 +165,7 @@ class ProductList() : AppCompatActivity() {
 
                     ////
                     recyclerView = findViewById(R.id.recyclerView)
-                    var favoriteNewProductadapter = CustomAdapter(applicationContext, accountList)                   // CustomaApdater() 를 저장하는 apdater 변수 생성
+                    var favoriteNewProductadapter = FavoriteNewProductAdapter(applicationContext, accountList)                   // CustomaApdater() 를 저장하는 apdater 변수 생성
                     val recyclerDecoration = RecyclerViewDecoration(20,5)
 
                     recyclerView.addItemDecoration(recyclerDecoration)

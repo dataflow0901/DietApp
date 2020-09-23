@@ -11,10 +11,15 @@ import android.widget.AdapterView
 import android.widget.TextView
 import android.widget.ListView
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.diet.R
 
 import com.diet.ProductInfo
 import com.diet.ProductList
+import com.diet.RecyclerViewDecoration
+import com.diet.adapter.FavoriteNewProductAdapter
+import com.diet.adapter.HomeFavoriteNewProductAdapter
 import com.diet.adapter.ProductListAdapter
 import com.diet.model.ProductDTO
 import com.diet.model.retrofits.ProductApiRetrofit
@@ -35,7 +40,8 @@ import kotlinx.android.synthetic.main.activity_product_list.listViewProductList
 class HomeFragment : Fragment() {
 
     private lateinit var newProduct: TextView
-    private lateinit var newProduct1Name: TextView
+    private lateinit var newProductMore: TextView
+    private lateinit var recyclerViewNewFavoriteProduct: RecyclerView
 
     var new_product_company = ""
     var productNo = 0
@@ -51,18 +57,19 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_status, null)
 
         newProduct = view.findViewById(R.id.newProduct)
+        newProductMore = view.findViewById(R.id.newProductMore)
+        recyclerViewNewFavoriteProduct = view.findViewById(R.id.recyclerViewNewFavoriteProduct)
 
-        newProduct1Name = view.findViewById(R.id.newProduct1Name)
 
         // 인기 신제품 리스트
-        newProduct.setOnClickListener {
+        newProductMore.setOnClickListener {
             activity?.let {
 
                 val goNewProduct = Intent(it, ProductList::class.java)
@@ -70,158 +77,114 @@ class HomeFragment : Fragment() {
             }
         }
 
+        getProductList()
+
         // 인기 신제품
-        newProduct1Name.setOnClickListener {
-            activity?.let {
 
-                val goNewProduct1Name = Intent(it, ProductInfo::class.java)
-
-                //goNewProduct1Name.putExtra("companyName", newProduct1Name)
-
-                it.startActivity(goNewProduct1Name)
-            }
-        }
 
         return view
     }
 
 
-/*
 
     private fun getProductList() {
-//        Log.d("getCreditBillByPeriod userId", userId)
         val product = ProductDTO()
 
-        //certificate.applier = userId
-        //certificate.startDate = "2020-09-01"
-        //certificate.endDate = "2020-09-30"
+        product.salesStandCode = "NEW_PROD"
 
-        product.newProductCompany = "abc"
-        product.productNo = 1
-        product.productCode = "abc"
-        product.price = 10000
-        product.newProduct1Name = "abc"
-        product.unit = "개"
+        println("step ******************************************************** 00c");
 
         val res: Call<JsonObject> =
-            ProductApiRetrofit.getInstance(requireContext()).service.getProductList(
-                product
-            )
+            ProductApiRetrofit.getInstance(context).service.getProductList(product)
         res.enqueue(object : Callback<JsonObject?> {
             override fun onResponse(call: Call<JsonObject?>, response: Response<JsonObject?>) {
-                Log.d("getCreditBillByPeriod", response.toString())
+                Log.d("getProductList", response.toString())
 //                val result = response.body()?.getAsJsonObject("result")
 
                 val result = response.body()
 
+                println("step ******************************************************** 00d");
+
                 if (response.isSuccessful) {
                     val result = response.body()!!.getAsJsonArray("result")
+                    Log.d("ProductList result", result.toString())
+
+                    println("step ******************************************************** 00e")
+
 
                     for (j in result) {
                         val json = j.asJsonObject
                         val item = ProductDTO()
 
-//                        item.name = json.getAsJsonPrimitive("creditorName")!!.asString
-//                        item.amount =
-//                            Utils.setDecimalFormat((json.getAsJsonPrimitive("principalAmount")!!.asInt).toString()) + "원"
-//                        item.startDate = json.getAsJsonPrimitive("startDate")!!.asString
-//                        item.endDate = json.getAsJsonPrimitive("expireDate")!!.asString
-//                        item.interestRate =
-//                            json.getAsJsonPrimitive("interestRate")!!.asFloat.toString() + "%"
-//                        item.interestAmount =
-//                            "(" + Utils.setDecimalFormat((json.getAsJsonPrimitive("interestAmount")!!.asInt).toString()) + "원)"
-//
-//                        accountList.add(item)
-//
-//                        loanTotalMoney += json.getAsJsonPrimitive("principalAmount")!!.asInt
-//
-//                        Log.d("item", item.toString())
-
-
-                        item.newProductCompany = json.getAsJsonPrimitive("new_product_company")!!.asString
-                    //    item.productNo = json.getAsJsonPrimitive("productNo")!!.asInt
-                    //    item.productCode = json.getAsJsonPrimitive("productCode")!!.asString
+                        item.salesStandCode = json.getAsJsonPrimitive("salesStandCode")!!.asString
+                        item.salesStandName = json.getAsJsonPrimitive("salesStandName")!!.asString
+                        item.productCode = json.getAsJsonPrimitive("productCode")!!.asString
+                        item.productName = json.getAsJsonPrimitive("productName")!!.asString
+                        item.companyCode = json.getAsJsonPrimitive("companyCode")!!.asString
+                        item.companyName = json.getAsJsonPrimitive("companyName")!!.asString
+                        item.qty = json.getAsJsonPrimitive("qty")!!.asInt
+                        item.unit = json.getAsJsonPrimitive("unit")!!.asString
                         item.price = json.getAsJsonPrimitive("price")!!.asInt
-                        item.newProduct1Name = json.getAsJsonPrimitive("product_name")!!.asString
-                    //    item.unit = json.getAsJsonPrimitive("unit")!!.asString
+                        item.ranking = json.getAsJsonPrimitive("ranking")!!.asInt
+                        item.gpa = json.getAsJsonPrimitive("gpa")!!.asInt
+                        item.review = json.getAsJsonPrimitive("review")!!.asInt
+                        item.deliveryCost = json.getAsJsonPrimitive("deliveryCost")!!.asInt
+
 
                         accountList.add(item)
+                        if(accountList.size == 3) {
+                            break
+                        }
 
                     }
 
-                    //textViewGetTotalAmount?.text =
-                    //    Utils.setDecimalFormat(loanTotalMoney.toString()) + "원"
-                    val productListAdapter = ProductListAdapter(
+                    val homeFavoriteNewProductAdapter = HomeFavoriteNewProductAdapter(
                         requireContext(),
                         accountList
                     )
 
-                    listViewProduct.adapter = productListAdapter
+                    val recyclerDecoration = RecyclerViewDecoration(20, 5)
 
-                    listViewProduct.onItemClickListener =
-                        AdapterView.OnItemClickListener { parent, view, position, id ->
-                            /**
-                             * ListView의 Item을 Click 할 때 수행할 동작
-                             * @param parent 클릭이 발생한 AdapterView.
-                             * @param view 클릭 한 AdapterView 내의 View(Adapter에 의해 제공되는 View).
-                             * @param position 클릭 한 Item의 position
-                             * @param id 클릭 된 Item의 Id
-                             */
+                    recyclerViewNewFavoriteProduct.addItemDecoration(recyclerDecoration)
+                    recyclerViewNewFavoriteProduct.adapter =
+                        homeFavoriteNewProductAdapter
+                    recyclerViewNewFavoriteProduct.layoutManager = GridLayoutManager(requireContext(), 3)
 
 
-                            // adapter.getItem(position)의 return 값은 Object 형
-                            // 실제 Item의 자료형은 CustomDTO 형이기 때문에
-                            // 형변환을 시켜야 getResId() 메소드를 호출할 수 있습니다.
 
-                            // new Intent(현재 Activity의 Context, 시작할 Activity 클래스)
-                            val intent = Intent(requireContext(), ProductInfo::class.java)
-                            //            val loan_no: Int = (.getItem(position) as CustomDTO).getResId()
-                            //            // putExtra(key, value)
-                            //            intent.putExtra("loan_no", loanNo)
-                            val new_product_company: String? =
-                                (productListAdapter.getItem(position) as ProductDTO).newProductCompany
-//                            val productNo: Int? =
-//                                (productListAdapter.getItem(position) as ProductDTO).productNo
-//                            val product_code: String? =
-//                                (productListAdapter.getItem(position) as ProductDTO).productCode
-                            val price: Int? =
-                                (productListAdapter.getItem(position) as ProductDTO).price
-                            val product_name: String? =
-                                (productListAdapter.getItem(position) as ProductDTO).newProduct1Name
 
-                            intent.putExtra("new_product_company", new_product_company)
-//                            intent.putExtra("productNo", productNo)
-//                            intent.putExtra("product_code", product_code)
-                            intent.putExtra("price", price)
-                            intent.putExtra("product_name", product_name)
-
-                            startActivity(intent)
-                        }
 
                 } else {
                     try {
+
+
+                        println("step ******************************************************** 00f");
+
                         val errorMessage = response.errorBody()!!.string()
                         Log.d("getProductList", errorMessage)
                     } catch (e: IOException) {
                         e.toString()
                     }
                 }
+
+                println("step ******************************************************** 00g");
+
 //                monthTotalAmount.text = Utils.setDecimalFormat(loanTotalMoney.toString())+"원"
             }
 
             override fun onFailure(call: Call<JsonObject?>, t: Throwable) {
 
+
+                println("step ******************************************************** 00h");
+
+                Log.d("message", t.message)
+
                 t.message
+
+
+                println("step ******************************************************** 00i");
+
             }
         })
-
-
     }
-
- */
-
-}
-
-private fun Intent.putExtra(s: String, newProduct1Name: TextView?) {
-
 }

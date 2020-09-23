@@ -40,15 +40,6 @@ class ProductInfo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
 
-//        productName.text = intent.getStringExtra("productName")
-//        companyName.text = intent.getStringExtra("companyName")
-//        gpa.text = intent.getIntExtra("gpa", 0).toString()
-//        price.text = intent.getIntExtra("price", 0).toString() + " 원"
-//        ranking.text = intent.getIntExtra("ranking", 0).toString()
-//        deliveryCost.text = intent.getIntExtra("deliveryCost", 0).toString() + " 원"
-//        review.text = intent.getIntExtra("review", 0).toString()
-//
-//
 
         if (intent.hasExtra("salesStandCode")) {
             salesStandCode = intent.getStringExtra("salesStandCode")
@@ -59,32 +50,6 @@ class ProductInfo : AppCompatActivity() {
             salesStandCode = "NEW_PROD1"
             getProductList()
         }
-
-
-/*
-        myInfoContainer.setOnClickListener {
-            val goMyInfo = Intent (this,  MyInfo::class.java)
-            startActivity(goMyInfo)
-        }
-        setting_container.setOnClickListener{
-            val goMyInfo = Intent (this,  Setting::class.java)
-            startActivity(goMyInfo)
-        }
-
-        notice_container.setOnClickListener {
-            val goNotice = Intent (this, Notice::class.java)
-            startActivity(goNotice)
-        }
-        customer_center_container.setOnClickListener {
-            val goCustomerCenter = Intent(this, CustomerCenter::class.java)
-            startActivity(goCustomerCenter)
-        }
-        termsPolicy_container.setOnClickListener {
-            val goTermsOfUsePrivacyPolicy = Intent (this, TermsOfUsePrivacyPolicy::class.java)
-            startActivity(goTermsOfUsePrivacyPolicy)
-        }
-        app_info_container
-*/
 
     }
 

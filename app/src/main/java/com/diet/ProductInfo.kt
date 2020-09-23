@@ -50,14 +50,16 @@ class ProductInfo : AppCompatActivity() {
 //
 //
 
+
+
         if (intent.hasExtra("salesStandCode")) {
             salesStandCode = intent.getStringExtra("salesStandCode")
             productCode = intent.getStringExtra("productCode")
-            getProductList()
+            getProduct()
 
         } else {
             salesStandCode = "NEW_PROD1"
-            getProductList()
+            getProduct()
         }
 
 
@@ -89,7 +91,7 @@ class ProductInfo : AppCompatActivity() {
     }
 
 
-    private fun getProductList() {
+    private fun getProduct() {
 
         val product = ProductDTO()
 
@@ -108,11 +110,16 @@ class ProductInfo : AppCompatActivity() {
                 Log.d("response.body.toString()", response.body().toString())
 
                 if (response.isSuccessful) {
-                    val result = response.body()!!.getAsJsonArray("result")
+
+                    val result = response.body()!!.getAsJsonObject("result")
+
+                    println("step ******************************************************** 00i-b");
 
                     Log.d("response.body.getAsJsonArray.toString", result.toString())
-                    for (j in result) {
-                        val json = j.asJsonObject
+
+
+                        val json = result
+
                         productName.text = json.getAsJsonPrimitive("productName")!!.asString
                         companyName.text = json.getAsJsonPrimitive("companyName")!!.asString
                         price.text = json.getAsJsonPrimitive("price")!!.asInt.toString()
@@ -122,8 +129,7 @@ class ProductInfo : AppCompatActivity() {
                         deliveryCost.text =
                             json.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()
 
-                    }
-
+                        println("step ******************************************************** 00i-3");
 
                 } else {
                     try {

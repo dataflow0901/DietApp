@@ -109,7 +109,6 @@ class ProductList() : AppCompatActivity() {
         //certificate.endDate = "2020-09-30"
 
         product.salesStandCode = "NEW_PROD"
-        //product.newProduct = newProduct
 
         println("step ******************************************************** 00c");
 

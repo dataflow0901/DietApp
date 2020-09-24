@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,13 +9,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/top_container"
-        android:layout_marginTop="5dp"
-        android:layout_width="370dp"
-        android:layout_height="54dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".92">
+        >
 
         <!--        <TextView-->
         <!--            android:id="@+id/tvTitle"-->
@@ -29,12 +30,26 @@
         <!--            android:textStyle="bold" />-->
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/phone_ico_my"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_slide_menu"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.24" />
+        <Button
+            android:id="@+id/button_slide_menu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+
+            android:background="@drawable/ic_hamburger"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.1"
+            />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

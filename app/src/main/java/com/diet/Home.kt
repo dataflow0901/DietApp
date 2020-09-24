@@ -1,5 +1,6 @@
 package com.diet
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +38,10 @@ class Home : AppCompatActivity() {
             .replace(R.id.frameLayout, HomeFragment()).commit()
 
 
+        val goSlideMenu : Intent = Intent(this, SlideMenu::class.java)
+        button_slide_menu.setOnClickListener {
+            startActivity(goSlideMenu)
+        }
         //프래그먼트
         statusTextView.setOnClickListener {
             changeFragment(0)

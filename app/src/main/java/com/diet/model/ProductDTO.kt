@@ -18,5 +18,9 @@ class ProductDTO {
     var gpa: Int? = null
     var review: Int? = null
     var deliveryCost: Int? = null
+    var category1Code : String? = ""
+    var category1Name : String? = ""
+    var category2Code : String? = ""
+    var category2Name : String? = ""
 
 }

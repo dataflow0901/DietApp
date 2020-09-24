@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.diet.ProductInfo
 import com.diet.R
 import com.diet.model.ProductDTO
-import kotlinx.android.synthetic.main.item_product_list.view.*
+import kotlinx.android.synthetic.main.item_category_list.view.*
 
 class FavoriteNewProductAdapter(val context: Context, private val productList: ArrayList<ProductDTO>) :
     RecyclerView.Adapter<FavoriteNewProductAdapterHolder>() {
@@ -19,7 +19,7 @@ class FavoriteNewProductAdapter(val context: Context, private val productList: A
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteNewProductAdapterHolder {
         //레이아웃 생성
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_product_list,
+            R.layout.item_category_list,
             parent, false
         )
         return FavoriteNewProductAdapterHolder(view, context)

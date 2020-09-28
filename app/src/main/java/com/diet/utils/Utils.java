@@ -37,7 +37,7 @@ public class Utils {
 
         String SYURL2 = "http://192.168.219.102:9090";
 
-        return  SYURL ;
+        return  WCURL ;
     }
 
 

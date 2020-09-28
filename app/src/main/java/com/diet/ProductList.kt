@@ -9,11 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.diet.model.ProductDTO
 import com.diet.model.retrofits.ProductApiRetrofit
 import com.google.gson.JsonObject
-//import com.blildo.views.fragmentView.LentCertificateFragment
-//import com.blildo.views.fragmentView.BorrowedCertificateFragment
-//import com.blildo.views.fragmentView.ManagementFragment
-//import com.blildo.views.fragmentView.HomeFragment
-//import com.blildo.views.hambuger.Hamburger
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -214,11 +209,11 @@ class ProductList() : AppCompatActivity() {
                     }
 
                     recyclerView = findViewById(R.id.recyclerView)
-                    var favoriteNewProductadapter = FavoriteNewProductAdapter(applicationContext, accountList)                   // CustomaApdater() 를 저장하는 apdater 변수 생성
+                    var favoriteNewProductAdapter = FavoriteNewProductAdapter(applicationContext, accountList)                   // CustomaApdater() 를 저장하는 apdater 변수 생성
                     val recyclerDecoration = RecyclerViewDecoration(20,5)
 
                     recyclerView.addItemDecoration(recyclerDecoration)
-                    recyclerView.adapter = favoriteNewProductadapter // CustomAdapter에 선언한 ProductList 변수에 data  변수 전달
+                    recyclerView.adapter = favoriteNewProductAdapter // CustomAdapter에 선언한 ProductList 변수에 data  변수 전달
                     //ListView 형식을 위한 LinearLayoutManager\
                     recyclerView.layoutManager = GridLayoutManager(applicationContext,2)
 

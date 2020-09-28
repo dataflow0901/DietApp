@@ -59,19 +59,7 @@ class FavoriteNewProductAdapterHolder(itemView: View, context: Context) :
             val intent = Intent(context, ProductInfo::class.java)
             intent.putExtra("salesStandCode",productList.salesStandCode)
             intent.putExtra("productCode",productList.productCode)
-
-            intent.putExtra("productName",productList.productName)
-            intent.putExtra("companyCode",productList.companyCode)
-            intent.putExtra("companyName",productList.companyName)
-            intent.putExtra("qty",productList.qty)
-            intent.putExtra("unit",productList.unit)
-            intent.putExtra("price",productList.price)
-            intent.putExtra("ranking",productList.ranking)
-            intent.putExtra("gpa",productList.gpa)
-            intent.putExtra("review",productList.review)
-            intent.putExtra("deliveryCost",productList.deliveryCost)
-
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(context, intent, Bundle())
         }
     }

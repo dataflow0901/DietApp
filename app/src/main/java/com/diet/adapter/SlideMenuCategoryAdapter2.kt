@@ -1,12 +1,16 @@
 package com.diet.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.diet.ProductList
 import com.diet.R
 import com.diet.RecyclerViewDecoration
 import com.diet.model.ProductDTO
@@ -55,13 +59,28 @@ class SlideMenuCategoryAdapterHolder2(itemView: View, context: Context) :
 
     val context = context
     var count = 0
+    private var category2Code  = ""
+    private var category2Name  = ""
+    var productList = arrayListOf<ProductDTO>()
+
 
     fun setListData(productList: ProductDTO) {
 
         itemView.textView_category.text = productList.category2Name
 
 
+        itemView.setOnClickListener {
+
+            val goProductList = Intent(context, ProductList::class.java)
+            goProductList.putExtra("category2Code",  productList.category2Code.toString())
+            goProductList.putExtra("category2Name", productList.category2Name.toString())
+            goProductList.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(context, goProductList, Bundle())
+        }
+
+
     }
+
 
 
 }

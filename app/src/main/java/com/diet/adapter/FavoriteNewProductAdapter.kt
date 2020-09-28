@@ -40,7 +40,7 @@ class FavoriteNewProductAdapter(val context: Context, private val productList: A
 
 }
 
-//매개변수로 있는 아이템은 하나의 리스트 아이엩ㅁ을 아답터로부터 전달받는 변수
+//매개변수로 있는 아이템은 하나의 리스트 아이템을 아답터로부터 전달받는 변수
 class FavoriteNewProductAdapterHolder(itemView: View, context: Context) :
     RecyclerView.ViewHolder(itemView) {  // 뷰홀더를 사용하기위해 상속
 
@@ -59,6 +59,18 @@ class FavoriteNewProductAdapterHolder(itemView: View, context: Context) :
             val intent = Intent(context, ProductInfo::class.java)
             intent.putExtra("salesStandCode",productList.salesStandCode)
             intent.putExtra("productCode",productList.productCode)
+
+            intent.putExtra("productName",productList.productName)
+            intent.putExtra("companyCode",productList.companyCode)
+            intent.putExtra("companyName",productList.companyName)
+            intent.putExtra("qty",productList.qty)
+            intent.putExtra("unit",productList.unit)
+            intent.putExtra("price",productList.price)
+            intent.putExtra("ranking",productList.ranking)
+            intent.putExtra("gpa",productList.gpa)
+            intent.putExtra("review",productList.review)
+            intent.putExtra("deliveryCost",productList.deliveryCost)
+
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
             startActivity(context, intent, Bundle())
         }

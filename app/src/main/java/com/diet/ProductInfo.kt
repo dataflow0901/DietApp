@@ -1,18 +1,11 @@
 package com.diet
 
-//import com.blildo.views.fragmentView.LentCertificateFragment
-//import com.blildo.views.fragmentView.BorrowedCertificateFragment
-//import com.blildo.views.fragmentView.ManagementFragment
-//import com.blildo.views.fragmentView.HomeFragment
-//import com.blildo.views.hambuger.Hamburger
-
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.diet.model.OrderDTO
 import com.diet.model.ProductDTO
 import com.diet.model.retrofits.OrderApiRetrofit
@@ -170,17 +163,6 @@ class ProductInfo : AppCompatActivity() {
                     textView_ranking.text = result?.getAsJsonPrimitive("ranking")!!.asInt.toString()
                     textView_review.text = result?.getAsJsonPrimitive("review")!!.asInt.toString()
                     textView_deliveryCost.text = result?.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()
-
-
-/*
-                    productName= result?.getAsJsonPrimitive("productName")!!.asString
-                    companyName = result?.getAsJsonPrimitive("companyName")!!.asString
-                    price = result?.getAsJsonPrimitive("price")!!.asInt
-                    gpa = result?.getAsJsonPrimitive("gpa")!!.asInt
-                    ranking = result?.getAsJsonPrimitive("ranking")!!.asInt
-                    review = result?.getAsJsonPrimitive("review")!!.asInt
-                    deliveryCost = result?.getAsJsonPrimitive("deliveryCost")!!.asInt
-*/
 
 
                 } else {

@@ -92,7 +92,6 @@ class HomeFragment : Fragment() {
 
         product.salesStandCode = "NEW_PROD"
 
-        println("step ******************************************************** 00c");
 
         val res: Call<JsonObject> =
             ProductApiRetrofit.getInstance(context).service.getProductList(product)
@@ -103,13 +102,11 @@ class HomeFragment : Fragment() {
 
                 val result = response.body()
 
-                println("step ******************************************************** 00d");
 
                 if (response.isSuccessful) {
                     val result = response.body()!!.getAsJsonArray("result")
                     Log.d("ProductList result", result.toString())
 
-                    println("step ******************************************************** 00e")
 
 
                     for (j in result) {
@@ -158,7 +155,6 @@ class HomeFragment : Fragment() {
                     try {
 
 
-                        println("step ******************************************************** 00f");
 
                         val errorMessage = response.errorBody()!!.string()
                         Log.d("getProductList", errorMessage)
@@ -167,22 +163,18 @@ class HomeFragment : Fragment() {
                     }
                 }
 
-                println("step ******************************************************** 00g");
-
 //                monthTotalAmount.text = Utils.setDecimalFormat(loanTotalMoney.toString())+"원"
             }
 
             override fun onFailure(call: Call<JsonObject?>, t: Throwable) {
 
 
-                println("step ******************************************************** 00h");
 
                 Log.d("message", t.message)
 
                 t.message
 
 
-                println("step ******************************************************** 00i");
 
             }
         })

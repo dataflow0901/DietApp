@@ -59,7 +59,7 @@ class FavoriteNewProductAdapterHolder(itemView: View, context: Context) :
             val intent = Intent(context, ProductInfo::class.java)
             intent.putExtra("salesStandCode",productList.salesStandCode)
             intent.putExtra("productCode",productList.productCode)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(context, intent, Bundle())
         }
     }

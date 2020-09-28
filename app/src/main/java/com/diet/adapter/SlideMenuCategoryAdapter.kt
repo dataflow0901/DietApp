@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.diet.R
-import com.diet.RecyclerViewDecoration
 import com.diet.model.ProductDTO
 import com.diet.model.retrofits.ProductApiRetrofit
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.activity_slide_menu.view.*
 import kotlinx.android.synthetic.main.item_slide_menu_category.view.*
 import retrofit2.Call
 import retrofit2.Callback

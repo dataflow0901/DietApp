@@ -1,14 +1,6 @@
 package com.diet
 
-//import com.blildo.views.fragmentView.LentCertificateFragment
-//import com.blildo.views.fragmentView.BorrowedCertificateFragment
-//import com.blildo.views.fragmentView.ManagementFragment
-//import com.blildo.views.fragmentView.HomeFragment
-//import com.blildo.views.hambuger.Hamburger
 
-
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity

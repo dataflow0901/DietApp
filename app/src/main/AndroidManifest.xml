@@ -40,6 +40,9 @@
         <activity
             android:name=".ProductList"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OrderInfo"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

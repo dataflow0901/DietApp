@@ -40,7 +40,7 @@ class FavoriteNewProductAdapter(val context: Context, private val productList: A
 
 }
 
-//매개변수로 있는 아이템은 하나의 리스트 아이엩ㅁ을 아답터로부터 전달받는 변수
+//매개변수로 있는 아이템은 하나의 리스트 아이템을 아답터로부터 전달받는 변수
 class FavoriteNewProductAdapterHolder(itemView: View, context: Context) :
     RecyclerView.ViewHolder(itemView) {  // 뷰홀더를 사용하기위해 상속
 

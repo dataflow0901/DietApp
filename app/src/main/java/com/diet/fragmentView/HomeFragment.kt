@@ -128,6 +128,9 @@ class HomeFragment : Fragment() {
                         item.deliveryCost = json.getAsJsonPrimitive("deliveryCost")!!.asInt
 
 
+                        println("step ******************************************************** 00e-001")
+
+
                         accountList.add(item)
                         if(accountList.size == 3) {
                             break

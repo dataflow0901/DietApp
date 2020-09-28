@@ -12,10 +12,10 @@ public class Utils {
 
 
     public static String getUserId(Context context){
-        String userSY = "ysy";
+        String userSY = "steveyou7";
         String userWC = "kwc";
 
-        return userWC;
+        return userSY;
     }
 
     public static String setDecimalFormat(String input) {
@@ -35,7 +35,7 @@ public class Utils {
         String JGURL = "http://192.168.0.3:9090";
         String WCURL = "http://192.168.0.4:9090";
 
-        String SYURL2 = "http://192.168.219.102:9090";
+        String SYURL2 = "http://192.168.219.101:9090";
 
         return  WCURL ;
     }

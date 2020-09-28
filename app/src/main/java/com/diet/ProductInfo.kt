@@ -51,23 +51,22 @@ class ProductInfo : AppCompatActivity() {
 
         if (intent.hasExtra("salesStandCode")) {
 
-            println("step ******************************************************** productInfo - 001")
-            salesStandCode = "NEW_PROD"
+            salesStandCode = intent.getStringExtra("salesStandCode")
 
 //            salesStandCode = intent.getStringExtra("salesStandCode")
             productCode = intent.getStringExtra("productCode")
-
-
-            productName = intent.getStringExtra("productName")
-            companyCode = intent.getStringExtra("companyCode")
-            companyName = intent.getStringExtra("companyName")
-            qty = intent.getIntExtra("qty", 0 )
-            unit = intent.getStringExtra("unit")
-            price = intent.getIntExtra("price", 0)
-            ranking = intent.getIntExtra("ranking", 0)
-            gpa = intent.getIntExtra("gpa", 0)
-            review = intent.getIntExtra("review", 0)
-            deliveryCost = intent.getIntExtra("deliveryCost", 0)
+//
+//
+//            productName = intent.getStringExtra("productName")
+//            companyCode = intent.getStringExtra("companyCode")
+//            companyName = intent.getStringExtra("companyName")
+//            qty = intent.getIntExtra("qty", 0 )
+//            unit = intent.getStringExtra("unit")
+//            price = intent.getIntExtra("price", 0)
+//            ranking = intent.getIntExtra("ranking", 0)
+//            gpa = intent.getIntExtra("gpa", 0)
+//            review = intent.getIntExtra("review", 0)
+//            deliveryCost = intent.getIntExtra("deliveryCost", 0)
 
 
             getProduct()
@@ -77,27 +76,27 @@ class ProductInfo : AppCompatActivity() {
             println("step ******************************************************** productInfo - 002")
 
             salesStandCode = "NEW_PROD1"
-            //salesStandCode = intent.getStringExtra("salesStandCode")
-            productCode = intent.getStringExtra("productCode")
-
-            productName = intent.getStringExtra("productName")
-            companyCode = intent.getStringExtra("companyCode")
-            companyName = intent.getStringExtra("companyName")
-            qty = intent.getIntExtra("qty", 0 )
-            unit = intent.getStringExtra("unit")
-            ranking = intent.getIntExtra("ranking", 0)
-            gpa = intent.getIntExtra("gpa", 0)
-            review = intent.getIntExtra("review", 0)
-            deliveryCost = intent.getIntExtra("deliveryCost", 0)
-
-            Log.d("productName" ,  productName)
+//            //salesStandCode = intent.getStringExtra("salesStandCode")
+//            productCode = intent.getStringExtra("productCode")
+//
+//            productName = intent.getStringExtra("productName")
+//            companyCode = intent.getStringExtra("companyCode")
+//            companyName = intent.getStringExtra("companyName")
+//            qty = intent.getIntExtra("qty", 0 )
+//            unit = intent.getStringExtra("unit")
+//            ranking = intent.getIntExtra("ranking", 0)
+//            gpa = intent.getIntExtra("gpa", 0)
+//            review = intent.getIntExtra("review", 0)
+//            deliveryCost = intent.getIntExtra("deliveryCost", 0)
+//
+//            Log.d("productName" ,  productName)
 
             getProduct()
 
         }
 
 
-        orderButton.setOnClickListener{
+        orderButton.setOnClickListener {
             val intent = Intent(this, OrderInfo::class.java)
 
             intent.putExtra("salesStandCode", salesStandCode)
@@ -121,13 +120,13 @@ class ProductInfo : AppCompatActivity() {
         }
 
 
-        cartButton.setOnClickListener{
+        cartButton.setOnClickListener {
 
             addCart()
 
         }
 
-        title_zzim.setOnClickListener{
+        title_zzim.setOnClickListener {
 
             addZzim()
 
@@ -143,9 +142,9 @@ class ProductInfo : AppCompatActivity() {
         product.salesStandCode = salesStandCode
         product.productCode = productCode
 
-        Log.d("salesStandCode" ,  salesStandCode)
-        Log.d("productCode" ,  productCode)
-        Log.d("productName" ,  productName)
+        Log.d("salesStandCode", salesStandCode)
+        Log.d("productCode", productCode)
+        Log.d("productName", productName)
 
         val res: Call<JsonObject> =
             ProductApiRetrofit.getInstance(this).service.getProduct(product)
@@ -162,8 +161,20 @@ class ProductInfo : AppCompatActivity() {
                     textView_gpa.text = result?.getAsJsonPrimitive("gpa")!!.asInt.toString()
                     textView_ranking.text = result?.getAsJsonPrimitive("ranking")!!.asInt.toString()
                     textView_review.text = result?.getAsJsonPrimitive("review")!!.asInt.toString()
-                    textView_deliveryCost.text = result?.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()
+                    textView_deliveryCost.text =
+                        result?.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()
 
+
+                    productName = result?.getAsJsonPrimitive("productName")!!.asString
+                    companyCode = result?.getAsJsonPrimitive("companyCode")!!.asString
+                    companyName = result?.getAsJsonPrimitive("companyName")!!.asString
+                    qty = result?.getAsJsonPrimitive("ranking")!!.asInt
+                    unit = result?.getAsJsonPrimitive("unit")!!.asString
+                    price = result?.getAsJsonPrimitive("price")!!.asInt
+                    ranking = result?.getAsJsonPrimitive("ranking")!!.asInt
+                    gpa = result?.getAsJsonPrimitive("gpa")!!.asInt
+                    review = result?.getAsJsonPrimitive("review")!!.asInt
+                    deliveryCost =  result?.getAsJsonPrimitive("deliveryCost")!!.asInt
 
                 } else {
                     try {
@@ -189,7 +200,7 @@ class ProductInfo : AppCompatActivity() {
 
         val order = OrderDTO()
 
-        Log.d("productCode" ,  productCode)
+        Log.d("productCode", productCode)
 
         order.userId = Utils.getUserId(applicationContext)
         order.productCode = productCode
@@ -214,7 +225,8 @@ class ProductInfo : AppCompatActivity() {
                 if (response.isSuccessful) {
 
                     Log.d("addOrder", result.toString())
-                    Toast.makeText(applicationContext, "해당 상품이 장바구니에 등록되었습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "해당 상품이 장바구니에 등록되었습니다.", Toast.LENGTH_SHORT)
+                        .show()
 
                     //finish()
 
@@ -227,6 +239,7 @@ class ProductInfo : AppCompatActivity() {
                     }
                 }
             }
+
             override fun onFailure(call: Call<JsonObject?>, t: Throwable) {
                 t.message
             }
@@ -238,7 +251,7 @@ class ProductInfo : AppCompatActivity() {
 
         val order = OrderDTO()
 
-        Log.d("productCode" ,  productCode)
+        Log.d("productCode", productCode)
 
         order.userId = Utils.getUserId(applicationContext)
         order.productCode = productCode
@@ -263,7 +276,8 @@ class ProductInfo : AppCompatActivity() {
                 if (response.isSuccessful) {
 
                     Log.d("addOrder", result.toString())
-                    Toast.makeText(applicationContext, "해당 상품이 찜 리스트에 등록되었습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "해당 상품이 찜 리스트에 등록되었습니다.", Toast.LENGTH_SHORT)
+                        .show()
                     //finish()
 
                 } else {
@@ -275,12 +289,12 @@ class ProductInfo : AppCompatActivity() {
                     }
                 }
             }
+
             override fun onFailure(call: Call<JsonObject?>, t: Throwable) {
                 t.message
             }
         })
     }
-
 
 
 }

@@ -43,6 +43,9 @@
         <activity
             android:name=".OrderInfo"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CartInfo"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

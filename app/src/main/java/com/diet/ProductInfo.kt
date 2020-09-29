@@ -132,6 +132,31 @@ class ProductInfo : AppCompatActivity() {
 
         }
 
+
+        cart_icon.setOnClickListener {
+
+            val intent = Intent(this, CartInfo::class.java)
+
+            intent.putExtra("salesStandCode", salesStandCode)
+            //intent.putExtra("salesStandName", salesStandName)
+            intent.putExtra("productCode", productCode)
+            intent.putExtra("productName", productName)
+            intent.putExtra("companyCode", companyCode)
+            intent.putExtra("companyName", companyName)
+            intent.putExtra("qty", qty)
+            intent.putExtra("unit", unit)
+            intent.putExtra("price", price)
+            intent.putExtra("ranking", ranking)
+            intent.putExtra("gpa", gpa)
+            intent.putExtra("review", review)
+            intent.putExtra("deliveryCost", deliveryCost)
+
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+
+            startActivity(intent)
+
+        }
+
     }
 
 

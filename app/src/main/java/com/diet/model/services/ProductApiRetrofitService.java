@@ -1,6 +1,7 @@
 package com.diet.model.services;
 
 
+import com.diet.model.OrderDTO;
 import com.diet.model.ProductDTO;
 import com.google.gson.JsonObject;
 
@@ -46,7 +47,8 @@ public interface ProductApiRetrofitService {
     @POST("getCategoryListByCategory2Code")
     Call<JsonObject> getCategoryListByCategory2Code(@Body ProductDTO product);
 
-
-
+    @Headers("Content-Type: application/json")
+    @POST("getCartInfoByUserID")
+    Call<JsonObject> getCartInfoByUserID(@Body ProductDTO product);
 }
  

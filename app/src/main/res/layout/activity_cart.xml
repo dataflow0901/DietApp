@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrderInfo">
+    tools:context=".CartInfo">
 
 
 
@@ -51,157 +51,62 @@
 
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/order_product_info"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_grey"
-            app:layout_constraintVertical_bias="0"
 
-            app:layout_constraintWidth_percent="0.92">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cart_item"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.42"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_grey">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView_order_product_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginTop="13dp"
-                android:gravity="center_horizontal"
-                android:text="전체선택"
-                android:textColor="@color/black"
-                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0."
-                app:layout_constraintWidth_percent="1" />
+                app:layout_constraintWidth_percent="0.92">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/newProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="전체선택"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:overScrollMode="never"
+                        android:layout_marginTop="30dp"
+                        android:id="@+id/recyclerCartProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/newProduct"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <TextView
-                android:id="@+id/textView_all_select"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="13dp"
-                android:layout_marginTop="13dp"
-                android:gravity="right"
-                android:text="전체삭제"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0"
-                app:layout_constraintWidth_percent="1" />
-
-
-            <ImageView
-                android:id="@+id/textView_all_delete"
-                android:layout_width="149dp"
-                android:layout_height="135dp"
-                android:layout_marginTop="50dp"
-                android:src="@drawable/new_product1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="1"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="48dp" />
-
-            <TextView
-                android:id="@+id/textView_productName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
-                android:layout_marginLeft="150dp"
-                android:gravity="center_horizontal"
-                android:text="제품이름"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.2"
-                app:layout_constraintWidth_percent="1" />
-
-            <TextView
-                android:id="@+id/option"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
-                android:layout_marginLeft="150dp"
-                android:gravity="center_horizontal"
-                android:text="옵션"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.4"
-                app:layout_constraintWidth_percent="1" />
-
-
-            <TextView
-                android:id="@+id/textView_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
-                android:layout_marginLeft="150dp"
-                android:gravity="center_horizontal"
-                android:text="가격"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias=".6"
-                app:layout_constraintWidth_percent="1" />
-
-            <TextView
-                android:id="@+id/textView_qty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
-                android:layout_marginLeft="150dp"
-                android:gravity="center_horizontal"
-                android:text="수량"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias=".8"
-                app:layout_constraintWidth_percent="1" />
-
-            <TextView
-                android:id="@+id/textView_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
-                android:layout_marginLeft="150dp"
-                android:gravity="center_horizontal"
-                android:text="총금액"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1"
-                app:layout_constraintWidth_percent="1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
         <View
             android:id="@+id/view_grey4"
@@ -209,7 +114,7 @@
             android:layout_height="8dp"
             android:layout_marginTop="5dp"
             android:background="@color/gray"
-            app:layout_constraintTop_toBottomOf="@+id/order_product_info" />
+            app:layout_constraintTop_toBottomOf="@+id/cart_item" />
 
 
 

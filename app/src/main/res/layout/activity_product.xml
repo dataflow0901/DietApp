@@ -45,7 +45,7 @@
 
 
             <ImageView
-                android:id="@+id/zzim_ico"
+                android:id="@+id/zzim_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="316dp"
@@ -59,7 +59,7 @@
                 />
 
             <ImageView
-                android:id="@+id/cart_ico"
+                android:id="@+id/cart_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="356dp"

@@ -9,15 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.TextView
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.diet.R
+import com.diet.*
 
-import com.diet.ProductInfo
-import com.diet.ProductList
-import com.diet.RecyclerViewDecoration
 import com.diet.adapter.FavoriteNewProductAdapter
 import com.diet.adapter.HomeFavoriteNewProductAdapter
 import com.diet.adapter.ProductListAdapter
@@ -42,6 +40,7 @@ class HomeFragment : Fragment() {
     private lateinit var newProduct: TextView
     private lateinit var newProductMore: TextView
     private lateinit var recyclerViewNewFavoriteProduct: RecyclerView
+    private lateinit var cart: ImageView
 
     var new_product_company = ""
     var productNo = 0
@@ -79,11 +78,36 @@ class HomeFragment : Fragment() {
 
         getProductList()
 
-        // 인기 신제품
 
+/*
+        cart.setOnClickListener {
+
+            val intent = Intent(this, CartInfo::class.java)
+
+            intent.putExtra("salesStandCode", salesStandCode)
+            //intent.putExtra("salesStandName", salesStandName)
+            intent.putExtra("productCode", productCode)
+            intent.putExtra("productName", productName)
+            intent.putExtra("companyCode", companyCode)
+            intent.putExtra("companyName", companyName)
+            intent.putExtra("qty", qty)
+            intent.putExtra("unit", unit)
+            intent.putExtra("price", price)
+            intent.putExtra("ranking", ranking)
+            intent.putExtra("gpa", gpa)
+            intent.putExtra("review", review)
+            intent.putExtra("deliveryCost", deliveryCost)
+
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+
+            startActivity(intent)
+
+        }
+*/
 
         return view
     }
+
 
 
 

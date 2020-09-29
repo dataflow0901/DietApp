@@ -5,6 +5,8 @@ import java.util.*
 
 class ProductDTO {
 
+    var userId:String? =  ""
+
     var salesStandCode:String? =  ""
     var salesStandName:String? =  ""
     var productCode: String? =  ""

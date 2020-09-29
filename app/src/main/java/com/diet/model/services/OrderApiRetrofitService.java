@@ -43,6 +43,12 @@ public interface OrderApiRetrofitService {
     @POST("getOrderInfoByUserID")
     Call<JsonObject> getOrderInfoByUserID(@Body OrderDTO order);
 
+/*
+
+    @Headers("Content-Type: application/json")
+    @POST("getCartInfoByUserID")
+    Call<JsonObject> getCartInfoByUserID(@Body OrderDTO order);
+*/
 
 }
  

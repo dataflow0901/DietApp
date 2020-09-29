@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.diet.R
 import com.diet.model.ProductDTO
 import com.diet.model.retrofits.ProductApiRetrofit
+import com.diet.utils.Utils
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.item_slide_menu_category.view.*
 import retrofit2.Call
@@ -17,10 +18,16 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
 
-class SlideMenuCategoryAdapter(val context: Context, private val productList: ArrayList<ProductDTO>) :
+class SlideMenuCategoryAdapter(
+    val context: Context,
+    private val productList: ArrayList<ProductDTO>
+) :
     RecyclerView.Adapter<SlideMenuCategoryAdapterHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlideMenuCategoryAdapterHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): SlideMenuCategoryAdapterHolder {
         //레이아웃 생성
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.item_slide_menu_category,
@@ -43,30 +50,29 @@ class SlideMenuCategoryAdapter(val context: Context, private val productList: Ar
     }
 
 
-
-
 }
 
-//매개변수로 있는 아이템은 하나의 리스트 아이엩ㅁ을 아답터로부터 전달받는 변수
+//매개변수로 있는 아이템은 하나의 리스트 아이템을 아답터로부터 전달받는 변수
 class SlideMenuCategoryAdapterHolder(itemView: View, context: Context) :
     RecyclerView.ViewHolder(itemView) {  // 뷰홀더를 사용하기위해 상속
 
     val context = context
     var category1Code = ""
-    val recyclerViewCategory2: RecyclerView  = itemView.findViewById(R.id.recyclerViewCategory2)
-    var count = 0
+    val recyclerViewCategory2: RecyclerView = itemView.findViewById(R.id.recyclerViewCategory2)
+
+
     fun setListData(productList: ProductDTO) {
 
         itemView.textView_category.text = productList.category1Name
         category1Code = productList.category1Code.toString()
         itemView.setOnClickListener {
-            if (count == 0){
-                count = 1
+            if (Utils.COUNT == 0) {
+                Utils.COUNT = 1
                 getProductList()
                 recyclerViewCategory2.visibility = View.VISIBLE
 
-            }else {
-                count = 0
+            } else {
+                Utils.COUNT = 0
                 recyclerViewCategory2.visibility = View.GONE
             }
         }
@@ -100,17 +106,17 @@ class SlideMenuCategoryAdapterHolder(itemView: View, context: Context) :
                         val item = ProductDTO()
 
 
-                        item.category2Code =json.getAsJsonPrimitive("category2Code")!!.asString
-                        Log.d("category2Code",json.getAsJsonPrimitive("category2Code")!!.asString)
-                        item.category2Name =json.getAsJsonPrimitive("category2Name")!!.asString
-                        Log.d("category2Name",json.getAsJsonPrimitive("category2Name")!!.asString)
+                        item.category2Code = json.getAsJsonPrimitive("category2Code")!!.asString
+                        Log.d("category2Code", json.getAsJsonPrimitive("category2Code")!!.asString)
+                        item.category2Name = json.getAsJsonPrimitive("category2Name")!!.asString
+                        Log.d("category2Name", json.getAsJsonPrimitive("category2Name")!!.asString)
 
 
                         accountList.add(item)
 
                     }
                     val slideMenuCategoryAdapter = SlideMenuCategoryAdapter2(
-                        context  ,
+                        context,
                         accountList
                     )
 
@@ -122,14 +128,10 @@ class SlideMenuCategoryAdapterHolder(itemView: View, context: Context) :
                     recyclerViewCategory2.layoutManager = LinearLayoutManager(context)
 
 
-
-
-
                 } else {
                     try {
 
 
-                        println("step ******************************************************** 00f");
 
                         val errorMessage = response.errorBody()!!.string()
                         Log.d("getProductList", errorMessage)
@@ -144,11 +146,9 @@ class SlideMenuCategoryAdapterHolder(itemView: View, context: Context) :
             override fun onFailure(call: Call<JsonObject?>, t: Throwable) {
 
 
-
                 Log.d("message", t.message)
 
                 t.message
-
 
 
             }

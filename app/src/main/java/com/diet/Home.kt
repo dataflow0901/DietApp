@@ -3,6 +3,8 @@ package com.diet
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
 import com.diet.fragmentView.EventFragment
 import com.diet.fragmentView.HomeFragment
@@ -18,21 +20,37 @@ import org.jetbrains.anko.textColor
 
 import android.view.View
 import android.widget.TextView
-
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.diet.adapter.SlideMenuCategoryAdapter
+import com.diet.model.ProductDTO
+import com.diet.model.retrofits.ProductApiRetrofit
+import com.google.gson.JsonObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.IOException
 
 
 class Home : AppCompatActivity() {
-    //    lateinit var pieChart: PieChart
-//    val yValues = ArrayList<PieEntry>()
+
+    lateinit var recyclerViewSlideMenu : RecyclerView
+    var accountList = arrayListOf<ProductDTO>()
+    lateinit var drawer_layout : DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        drawer_layout = findViewById(R.id.drawer_layout)
+        recyclerViewSlideMenu = findViewById(R.id.recyclerViewCategory1)
+
+        getProductList()
 
 
-//        hamburgerButton.setOnClickListener {
-//            val nextIntent = Intent(this, Hamburger::class.java)
-//            startActivity(nextIntent)
-//        }
+
+
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.frameLayout, HomeFragment()).commit()
@@ -40,7 +58,12 @@ class Home : AppCompatActivity() {
 
         val goSlideMenu : Intent = Intent(this, SlideMenu::class.java)
         button_slide_menu.setOnClickListener {
-            startActivity(goSlideMenu)
+//            startActivity(goSlideMenu)
+
+
+            drawer_layout.openDrawer(drawer);
+
+
         }
         //프래그먼트
         statusTextView.setOnClickListener {
@@ -148,6 +171,93 @@ class Home : AppCompatActivity() {
             }
 
         }
-    } 
+    }
+    private fun getProductList() {
+        val product = ProductDTO()
 
+        val res: Call<JsonObject> =
+            ProductApiRetrofit.getInstance(applicationContext).service.getCategoryList(product)
+        res.enqueue(object : Callback<JsonObject?> {
+            override fun onResponse(call: Call<JsonObject?>, response: Response<JsonObject?>) {
+                Log.d("getProductList", response.toString())
+//                val result = response.body()?.getAsJsonObject("result")
+
+                val result = response.body()
+
+                if (response.isSuccessful) {
+                    val result = response.body()!!.getAsJsonArray("result")
+                    Log.d("ProductList result", result.toString())
+
+
+
+                    for (j in result) {
+                        val json = j.asJsonObject
+                        val item = ProductDTO()
+
+
+                        item.category1Code =json.getAsJsonPrimitive("category1Code")!!.asString
+                        Log.d("category1Code",json.getAsJsonPrimitive("category1Code")!!.asString)
+                        item.category1Name =json.getAsJsonPrimitive("category1Name")!!.asString
+                        Log.d("category1Name",json.getAsJsonPrimitive("category1Name")!!.asString)
+
+
+                        accountList.add(item)
+
+                    }
+                    val slideMenuCategoryAdapter = SlideMenuCategoryAdapter(
+                        applicationContext  ,
+                        accountList
+                    )
+
+                    val recyclerDecoration = RecyclerViewDecoration(20, 5)
+
+
+                    recyclerViewSlideMenu.addItemDecoration(recyclerDecoration)
+                    recyclerViewSlideMenu.adapter =
+                        slideMenuCategoryAdapter
+                    recyclerViewSlideMenu.layoutManager = LinearLayoutManager(applicationContext)
+
+
+
+
+
+                } else {
+                    try {
+
+
+                        println("step ******************************************************** 00f");
+
+                        val errorMessage = response.errorBody()!!.string()
+                        Log.d("getProductList", errorMessage)
+                    } catch (e: IOException) {
+                        e.toString()
+                    }
+                }
+
+
+            }
+
+            override fun onFailure(call: Call<JsonObject?>, t: Throwable) {
+
+
+
+                Log.d("message", t.message)
+
+                t.message
+
+
+
+            }
+        })
+    }
+
+    override fun onBackPressed() {
+
+        if (drawer_layout.isDrawerOpen(Gravity.LEFT)){
+            drawer_layout.closeDrawer(Gravity.LEFT)
+        }
+        else {
+            finish()
+        }
+    }
 }

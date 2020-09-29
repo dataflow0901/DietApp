@@ -9,6 +9,9 @@ import java.text.DecimalFormat;
 
 public class Utils {
 
+    public static int COUNT = 0;
+
+
 
 
     public static String getUserId(Context context){

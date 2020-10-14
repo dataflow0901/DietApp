@@ -23,7 +23,9 @@ import java.util.*
 
 import android.view.View
 import android.widget.TextView
-
+import com.diet.fragmentView.HomeFragment
+import com.diet.fragmentView.SearchFragment
+/*import com.diet.fragmentView.SignUpFragment*/
 
 
 class IntroActivity : AppCompatActivity() {
@@ -31,10 +33,15 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
-
-        intro_button.setOnClickListener{
+        intro_button.setOnClickListener {
             val nextIntent = Intent(this, Home::class.java)
             startActivity(nextIntent)
+        }
+        login_check.setOnClickListener {
+            val nextIntent = Intent(this, LoginActivity::class.java)
+            startActivity(nextIntent)
+            /*val ft = supportFragmentManager.beginTransaction()
+            ft.replace(R.id.test_layout, SearchFragment()).addToBackStack(null).commit()*/
         }
 
 //        Log.d("폰",getPhoneNumber().replace("-",""))

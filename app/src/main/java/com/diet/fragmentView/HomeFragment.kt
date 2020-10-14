@@ -16,11 +16,17 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.diet.*
 
+import androidx.viewpager2.widget.ViewPager2
+import com.blildo.views.fragmentView.ViewPager2Adapter
+import com.diet.R
+
 import com.diet.adapter.FavoriteNewProductAdapter
 import com.diet.adapter.HomeFavoriteNewProductAdapter
 import com.diet.adapter.ProductListAdapter
 import com.diet.model.ProductDTO
 import com.diet.model.retrofits.ProductApiRetrofit
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.fragment_status.*
@@ -40,7 +46,11 @@ class HomeFragment : Fragment() {
     private lateinit var newProduct: TextView
     private lateinit var newProductMore: TextView
     private lateinit var recyclerViewNewFavoriteProduct: RecyclerView
-    private lateinit var cart: ImageView
+
+    private lateinit var viewPager: ViewPager2
+    private lateinit var tabLayout: TabLayout
+
+
 
     var new_product_company = ""
     var productNo = 0
@@ -65,6 +75,22 @@ class HomeFragment : Fragment() {
         newProduct = view.findViewById(R.id.newProduct)
         newProductMore = view.findViewById(R.id.newProductMore)
         recyclerViewNewFavoriteProduct = view.findViewById(R.id.recyclerViewNewFavoriteProduct)
+        viewPager = view.findViewById(R.id.view_pager)
+        tabLayout = view.findViewById(R.id.tab_layout)
+
+
+        val views = arrayOf(R.drawable.foodiamge1, R.drawable.foodiamge2)
+        //뷰페이저 아답터
+        viewPager.adapter = context?.let {
+            ViewPager2Adapter(
+                views,
+                it
+            )
+        }
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+        }.attach()
+
+        viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
 
         // 인기 신제품 리스트

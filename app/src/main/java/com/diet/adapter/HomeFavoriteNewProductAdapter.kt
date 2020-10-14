@@ -18,7 +18,7 @@ class HomeFavoriteNewProductAdapter(val context: Context, private val productLis
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeFavoriteNewProductAdapterHolder {
         //레이아웃 생성
-        val view = LayoutInflater.from(parent.context).inflate(
+            val view = LayoutInflater.from(parent.context).inflate(
             R.layout.item_main_new_favorite_product,
             parent, false
         )

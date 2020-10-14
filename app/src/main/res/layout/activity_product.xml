@@ -15,8 +15,8 @@
         tools:layout_editor_absoluteX="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="414dp"
-        android:layout_height="2300dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="29dp">
@@ -48,13 +48,13 @@
                 android:id="@+id/zzim_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="316dp"
-                android:layout_marginLeft="316dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/zzim_ico_my"
                 android:textColor="@color/black"
+                android:layout_marginRight="45dp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
@@ -62,13 +62,12 @@
                 android:id="@+id/cart_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="356dp"
-                android:layout_marginLeft="356dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/cart_ico_my"
                 android:textColor="@color/black"
+                android:layout_marginRight="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
@@ -90,7 +89,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.515"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toBottomOf="@+id/view_grey"
             app:layout_constraintWidth_percent="0.92">
 
@@ -412,15 +410,15 @@
                 android:id="@+id/title_tell"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
                 android:gravity="right"
                 android:text="신고"
-
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.513"
+                app:layout_constraintVertical_bias=".5"
                 app:layout_constraintWidth_percent="1" />
 
 
@@ -526,9 +524,10 @@
                 android:src="@drawable/page_product_1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.315"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintWidth_percent="1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -548,10 +547,10 @@
                 android:id="@+id/textView_product_review"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
-                android:layout_marginLeft="13dp"
+                android:layout_marginLeft="20dp"
                 android:gravity="center_horizontal"
                 android:text="리뷰"
+                app:layout_goneMarginLeft="20dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="15dp"
@@ -581,12 +580,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
                 android:text="Steveyou"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/textView_product_review"
+                app:layout_constraintStart_toStartOf="@+id/textView_product_review"
                 app:layout_constraintTop_toBottomOf="@id/textView_product_review"
 
                 />
@@ -595,8 +595,7 @@
                 android:id="@+id/product_review_content1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginHorizontal="30dp"
                 android:text="처음 이용했는데, 다이어트에 매우 효과가 크가 앞으로 더 많이 이용할게요. 처음 이용했는데, 다이어트에 매우 효과가 크가 앞으로 더 많이 이용할게요."
                 android:textColor="@color/black"
                 android:textSize="15dp"
@@ -616,7 +615,7 @@
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView_product_review"
                 app:layout_constraintTop_toBottomOf="@+id/product_review_content1"
                 app:layout_constraintWidth_percent="1" />
 
@@ -624,8 +623,7 @@
                 android:id="@+id/product_review_content2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginHorizontal="30dp"
                 android:text="처음 이용했는데, 다이어트에 매우 효과가 크가 앞으로 더 많이 이용할게요. 처음 이용했는데, 다이어트에 매우 효과가 크가 앞으로 더 많이 이용할게요."
                 android:textColor="@color/black"
                 android:textSize="15dp"

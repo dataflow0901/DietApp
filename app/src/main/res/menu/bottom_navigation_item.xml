@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="HOME" />
+    <item
+        android:id="@+id/search"
+        android:title="검색"/>
+    <item
+        android:id="@+id/favorite"
+        android:title="찜 목록" />
+    <item
+        android:id="@+id/mypage"
+        android:title="마이페이지"/>
+</menu>

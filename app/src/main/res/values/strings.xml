@@ -9,4 +9,17 @@
 
     <string name="hello_first_fragment">Hello! Eat and Diet !</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="required_id">- 6자 이상의 영문 혹은 영문과 숫자를 조합해 작성해주세요.\n- 아이디 중복확인</string>
+    <string name="required_pwd">- 10자 이상 입력해주세요. \n- 영문,숫자,특수문자를 2개이상 조합하여 작성해주세요.
+        \n- 동일한 숫자 3개이상 연속사용 불가능합니다.</string>
+    <string name="required_check_pwd">- 비밀번호를 한번더 입력해주세요</string>
+    <string name="textview_id">* 아이디</string>
+    <string name="hint_id">예) dataflow 또는 dataflow1</string>
+    <string name="certification">인증번호가 오지 않는다면, 통신사 스팸 차단 혹은 휴대폰 번호 차단여부를 확인해주세요\n
+    (데이터플로 1234-5678)</string>
+    <string name="address_detail">상세주소를 입력해주세요</string>
+    <string name="required_use">선택 항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</string>
+    <string name="privacy_agree">개인정보처리방침 동의 (필수)</string>
 </resources>

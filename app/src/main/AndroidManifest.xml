@@ -14,8 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SlideMenu"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ZzimActivity"></activity>
+        <activity android:name=".FindAddress" />
+        <activity android:name=".FindAddressActivity" />
+        <activity
+            android:name=".SignUpActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SlideMenu"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Home"
             android:theme="@style/AppTheme.NoActionBar" />

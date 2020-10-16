@@ -12,6 +12,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -36,19 +38,22 @@ import retrofit2.Response
 import java.io.IOException
 
 
-class Home : AppCompatActivity(){
+class Home : AppCompatActivity() {
 
     lateinit var recyclerViewSlideMenu: RecyclerView
     var accountList = arrayListOf<ProductDTO>()
     lateinit var drawer_layout: DrawerLayout
     private val searchFragment = SearchFragment()
     private val home = HomeFragment()
+    private val zzim = ZzimFragment()
+    private val mypage = MyPageFragment()
 
     /*    lateinit var appBarConfiguration : AppBarConfiguration*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        val tab_layout = findViewById<LinearLayout>(R.id.tab_layout)
 
 
         drawer_layout = findViewById(R.id.drawer_layout)
@@ -56,12 +61,29 @@ class Home : AppCompatActivity(){
 
         getProductList()
 
-
+        cart_page_img.setOnClickListener {
+            val nextIntent = Intent(this, CartInfo::class.java)
+            startActivity(nextIntent)
+        }
 
         bottom_navi.setOnNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.search -> bottomNaviChange(searchFragment)
-                R.id.home -> bottomNaviChange(home)
+            when (it.itemId) {
+                R.id.search -> {
+                    bottomNaviChange(searchFragment)
+                    tab_layout.visibility = View.GONE
+                }
+                R.id.home -> {
+                    bottomNaviChange(home)
+                    tab_layout.visibility = View.VISIBLE
+                }
+                R.id.zzim -> {
+                    bottomNaviChange(zzim)
+                    tab_layout.visibility = View.GONE
+                }
+                R.id.mypage -> {
+                    bottomNaviChange(mypage)
+                    tab_layout.visibility = View.GONE
+                }
             }; true
         }
 
@@ -171,10 +193,10 @@ class Home : AppCompatActivity(){
         }
     }
 
-    fun bottomNaviChange(fragment:Fragment){
-        if (fragment != null){
+    fun bottomNaviChange(fragment: Fragment) {
+        if (fragment != null) {
             val ft = supportFragmentManager.beginTransaction()
-            ft.replace(R.id.frameLayout,fragment).commit()
+            ft.replace(R.id.frameLayout, fragment).commit()
         }
     }
 

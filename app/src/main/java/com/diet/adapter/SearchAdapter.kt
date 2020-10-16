@@ -39,9 +39,7 @@ class SearchAdapter(val searchList: ArrayList<SearchDTO>):RecyclerView.Adapter<S
      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.SearchViewHolder {
         val view:View = LayoutInflater.from(parent.context).inflate(R.layout.search_item_layout, parent,false)
 
-        return SearchViewHolder(view).apply {
-
-        }
+         return SearchViewHolder(view)
     }
 
     override fun getItemCount(): Int {

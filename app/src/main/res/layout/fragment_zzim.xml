@@ -5,10 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".fragmentView.ZzimFragment">
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
   <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/zzim_list"
       tools:listitem="@layout/zzim_item"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"/>
 
+</ScrollView>
 
 </FrameLayout>

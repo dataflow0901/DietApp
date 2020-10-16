@@ -14,9 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ZzimActivity"></activity>
+
         <activity android:name=".FindAddress" />
-        <activity android:name=".FindAddressActivity" />
+
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/AppTheme.NoActionBar" />

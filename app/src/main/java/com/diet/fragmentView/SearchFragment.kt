@@ -13,6 +13,7 @@ import com.diet.R
 import com.diet.adapter.SearchAdapter
 import com.diet.model.SearchDTO
 import kotlinx.android.synthetic.main.fragment_search.*
+import org.jetbrains.anko.backgroundColor
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,6 +41,10 @@ class SearchFragment : Fragment() {
 
 
         var searchList :ArrayList<SearchDTO> = arrayListOf()
+
+        if (search_area.hasFocus()){
+            search_layout.setBackgroundColor(123456)
+        }
 
         lately_search.setOnClickListener {
             var searchList = arrayListOf(

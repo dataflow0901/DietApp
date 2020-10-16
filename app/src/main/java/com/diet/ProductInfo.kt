@@ -2,9 +2,12 @@ package com.diet
 
 
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.diet.model.OrderDTO
 import com.diet.model.ProductDTO
@@ -13,6 +16,8 @@ import com.diet.model.retrofits.ProductApiRetrofit
 import com.diet.utils.Utils
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_product.*
+import org.jetbrains.anko.textColor
+import org.jetbrains.anko.textColorResource
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,12 +47,18 @@ class ProductInfo : AppCompatActivity() {
     var deliveryCost = 0
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
-
+        product_info_scroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (scrollY < 500){
+                textView_gpa.setTextColor(Color.parseColor("#bbbbbb"))
+                product_review_content1.setTextColor(Color.parseColor("#bbbbbb"))
+            }
+        }
 
         if (intent.hasExtra("salesStandCode")) {
 

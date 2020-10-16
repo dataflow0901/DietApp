@@ -7,7 +7,7 @@
         android:id="@+id/search"
         android:title="검색"/>
     <item
-        android:id="@+id/favorite"
+        android:id="@+id/zzim"
         android:title="찜 목록" />
     <item
         android:id="@+id/mypage"

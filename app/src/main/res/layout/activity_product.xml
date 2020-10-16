@@ -7,6 +7,7 @@
     tools:context=".ProductInfo">
 
     <ScrollView
+        android:id="@+id/product_info_scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

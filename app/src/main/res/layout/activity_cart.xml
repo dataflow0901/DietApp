@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".CartInfo">
 
-
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,8 +45,6 @@
             android:layout_marginTop="15dp"
             android:background="@color/gray"
             app:layout_constraintTop_toBottomOf="@+id/cart_title_container" />
-
-
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -100,13 +95,9 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
         <View
             android:id="@+id/view_grey4"
@@ -115,9 +106,6 @@
             android:layout_marginTop="5dp"
             android:background="@color/gray"
             app:layout_constraintTop_toBottomOf="@+id/cart_item" />
-
-
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/final_info"
@@ -128,7 +116,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_grey4"
             app:layout_constraintVertical_bias="0"
-
             app:layout_constraintWidth_percent="0.92">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -295,7 +282,7 @@
             android:id="@+id/paymentButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/main_color_radius"
             android:gravity="center_horizontal"
             android:text="구매하기"

@@ -80,6 +80,7 @@ class OrderInfo : AppCompatActivity() {
         textView_point_amount = findViewById(R.id.textView_point_amount)
         textView_predict_amount = findViewById(R.id.textView_predict_amount)
         textView_point_remaining = findViewById(R.id.textView_point_remaining)
+
         if (intent.hasExtra("salesStandCode")) {
 
             println("step ******************************************************** productInfo - 001")

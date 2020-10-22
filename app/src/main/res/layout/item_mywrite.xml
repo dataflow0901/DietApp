@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/order_product_image"
+        android:layout_width="50dp"
+        android:layout_height="62dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/diet_shake_ico_my"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/review_company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="회사명"
+        app:layout_constraintStart_toEndOf="@+id/order_product_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/review_product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="상품명"
+        app:layout_constraintStart_toEndOf="@+id/order_product_image"
+        app:layout_constraintTop_toBottomOf="@+id/review_company_name" />
+
+    <TextView
+        android:id="@+id/review_product_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="옵션 :"
+        app:layout_constraintStart_toEndOf="@+id/order_product_image"
+        app:layout_constraintTop_toBottomOf="@+id/review_product_name" />
+
+    <TextView
+        android:id="@+id/review_order_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="옵션내용"
+        app:layout_constraintStart_toEndOf="@+id/review_product_unit"
+        app:layout_constraintTop_toBottomOf="@+id/review_product_name" />
+
+    <View
+        android:id="@+id/order_gray"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/review_product_unit" />
+
+    <TextView
+        android:id="@+id/wirte_review_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="작성날자"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_gray" />
+
+
+    <RatingBar
+        android:id="@+id/my_review_ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wirte_review_date" />
+
+    <TextView
+        android:id="@+id/my_write_review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="좋아요 좋아요 좋아요 좋아요"
+        app:layout_constraintTop_toBottomOf="@+id/my_review_ratingbar" />
+
+    <ImageView
+        android:id="@+id/my_review_photo"
+        android:layout_width="330dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/foodiamge1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_write_review" />
+
+
+    <View
+        android:id="@+id/order_gray2"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/my_review_photo" />
+</androidx.constraintlayout.widget.ConstraintLayout>

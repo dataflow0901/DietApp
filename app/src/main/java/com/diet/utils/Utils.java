@@ -1,10 +1,14 @@
 package com.diet.utils;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.fragment.app.DialogFragment;
+
 import java.text.DecimalFormat;
+import java.util.logging.Handler;
 
 
 public class Utils {
@@ -37,12 +41,18 @@ public class Utils {
         String SYURL = "http://192.168.0.8:9090";
         String JGURL = "http://192.168.0.3:9090";
         String WCURL = "http://192.168.0.4:9090";
-
+        String CHURL = "http://192.168.0.40:9090";
         String SYURL2 = "http://192.168.219.101:9090";
-
-        return  SYURL ;
+        String YJURL = "http:192.168.0.42:9090";
+        return  YJURL ;
     }
 
+   /* public static class DiaglofSample{
+        public static void showConfirmDialog(Context context, String title, String message, final Handler handler){
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle(title).setMessage(message).setCancelable(false).setPositiveButton("확인",)
+        }
+    }*/
 
 /*
     public static String firebaseAlert(CertificateDTO bill) {

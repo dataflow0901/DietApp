@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentView.WriteReviewFragment">
+
+
+    <Button
+        android:id="@+id/page_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="뒤로가기"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="리뷰쓰기"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/view_grey2"
+        />
+
+
+    <View
+        android:id="@+id/view_grey2"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/page_back" />
+
+    <TextView
+        android:id="@+id/rating_bar_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="평점을 선택해주세요"
+        app:layout_constraintTop_toBottomOf="@id/view_grey2" />
+
+    <RatingBar
+        android:id="@+id/start_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rating="0"
+        android:stepSize="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rating_bar_text" />
+
+    <View
+        android:id="@+id/view_grey3"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/start_bar" />
+
+    <TextView
+        android:id="@+id/product_good_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:text="좋았던 점\n 사용하신 제품의 자세한 리뷰를 남겨주세요"
+        app:layout_constraintTop_toBottomOf="@+id/view_grey3" />
+
+    <EditText
+        android:id="@+id/product_good_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="사용하시면서 좋았던 점을 작성해주세요"
+        app:layout_constraintTop_toBottomOf="@+id/product_good_tv" />
+
+    <View
+        android:id="@+id/view_grey5"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/product_good_et" />
+
+    <TextView
+        android:id="@+id/product_bad_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:text="아쉬운 점\n 사용하신 제품의 자세한 리뷰를 남겨주세요"
+        app:layout_constraintTop_toBottomOf="@+id/view_grey5" />
+
+    <EditText
+        android:id="@+id/product_bad_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="사용하시면서 아쉬운 점을 작성해주세요"
+        app:layout_constraintTop_toBottomOf="@+id/product_bad_tv" />
+
+    <View
+        android:id="@+id/view_grey4"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/product_bad_et" />
+
+
+    <Button
+        android:id="@+id/cancel_write"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="취소"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ok_write"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/ok_write"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/md_blue_100"
+        android:text="확인"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cancel_write" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

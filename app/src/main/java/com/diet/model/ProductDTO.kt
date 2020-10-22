@@ -6,7 +6,7 @@ import java.util.*
 class ProductDTO {
 
     var userId:String? =  ""
-
+    var searchKeyWord:String? =""
     var salesStandCode:String? =  ""
     var salesStandName:String? =  ""
     var productCode: String? =  ""

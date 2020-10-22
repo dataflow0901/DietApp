@@ -30,7 +30,6 @@ public interface ProductApiRetrofitService {
     @POST("getProductList")
     Call<JsonObject> getProductList(@Body ProductDTO product);
 
-
     @Headers("Content-Type: application/json")
     @POST("getProduct")
     Call<JsonObject> getProduct(@Body ProductDTO product);
@@ -38,6 +37,10 @@ public interface ProductApiRetrofitService {
     @Headers("Content-Type: application/json")
     @POST("getCategoryList")
     Call<JsonObject> getCategoryList(@Body ProductDTO product);
+
+    @Headers("Content-Type: application/json")
+    @POST("productSearch")
+    Call<JsonObject> getProductSearch(@Body ProductDTO product);
 
     @Headers("Content-Type: application/json")
     @POST("getCategoryListDetail")

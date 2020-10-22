@@ -13,6 +13,7 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.diet.model.OrderDTO
 import com.diet.model.ProductDTO
 import com.diet.model.retrofits.OrderApiRetrofit
@@ -34,8 +35,8 @@ import kotlinx.android.synthetic.main.activity_order.textView_email
 import kotlinx.android.synthetic.main.activity_order.textView_deliveryName
 import kotlinx.android.synthetic.main.activity_order.textView_deliveryUserCellNo
 import kotlinx.android.synthetic.main.activity_order.textView_deliveryAddress
-import kotlinx.android.synthetic.main.activity_order.textView_point_remaining
-import kotlinx.android.synthetic.main.activity_order.textView_point_used
+/*import kotlinx.android.synthetic.main.activity_order.textView_point_remaining
+import kotlinx.android.synthetic.main.activity_order.textView_point_used*/
 import kotlinx.android.synthetic.main.activity_order.textView_point_remaining_predict
 
 
@@ -70,16 +71,17 @@ class OrderInfo : AppCompatActivity() {
     private lateinit var textView_input_point: TextView
     lateinit var textView_point_amount: TextView
     lateinit var textView_predict_amount: TextView
-    lateinit var textView_point_remaining: TextView
+/*    lateinit var textView_point_remaining: TextView*/
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
+        val order_info = findViewById<ConstraintLayout>(R.id.order_info)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
         textView_input_point = findViewById(R.id.textView_input_point)
         textView_point_amount = findViewById(R.id.textView_point_amount)
         textView_predict_amount = findViewById(R.id.textView_predict_amount)
-        textView_point_remaining = findViewById(R.id.textView_point_remaining)
+        /*textView_point_remaining = findViewById(R.id.textView_point_remaining)*/
 
         if (intent.hasExtra("salesStandCode")) {
 
@@ -178,9 +180,9 @@ class OrderInfo : AppCompatActivity() {
                         ((totalprice - writePoint).toString())
                     textView_point_amount.text = writePoint.toString()
                     //보유포인트보다 textView_input_point에 작성한 포인트가 더 클경우 textView_input_point에 보유포인트만큼 작성
-                    if (textView_point_remaining.text.toString().toInt() < textView_input_point.text.toString().toInt()) {
+                    /*if (textView_point_remaining.text.toString().toInt() < textView_input_point.text.toString().toInt()) {
                         textView_input_point.text = textView_point_remaining.text.toString()
-                    }
+                    }*/
                     // textView_input_point에 작성한 포인트가 전체가격(개수 * 가격 + 배달료)보다 더 클경우 textView_input_point에 전체가격만큼 작성
                     if (textView_input_point.text.toString().toInt() > totalprice.toString().toInt()){
                         textView_input_point.text =  totalprice.toString()
@@ -202,13 +204,13 @@ class OrderInfo : AppCompatActivity() {
             textView_predict_amount.text =
                 (totalprice - (qty * price + deliveryCost)).toString() + "원"
             textView_input_point.text = totalprice.toString()
-            Log.d("포인트", textView_point_remaining.text.toString())
+          /*  Log.d("포인트", textView_point_remaining.text.toString())
             //보유포인트가 textView_input_point의 작성한 포인트 보다 작을경우 textView_input_point에 보유포인트만큼 기입
             if (textView_point_remaining.text.toString()
                     .toInt() < textView_input_point.text.toString().toInt()
             ) {
                 textView_input_point.text = textView_point_remaining.text.toString()
-            }
+            }*/
             //val nextIntent = Intent(this, OrderInfo::class.java)
 
             //textView_input_point.value = pointRemaining.toString()
@@ -257,10 +259,10 @@ class OrderInfo : AppCompatActivity() {
                         result?.getAsJsonPrimitive("deliveryUserCellNo")!!.toString()
                     textView_deliveryAddress.text =
                         result?.getAsJsonPrimitive("deliveryAddress")!!.toString()
-                    textView_point_remaining.text =
-                        result?.getAsJsonPrimitive("pointRemaining")!!.asInt.toString()
-                    textView_point_used.text =
-                        result?.getAsJsonPrimitive("pointUsed")!!.asInt.toString()
+                  /*  textView_point_remaining.text =
+                        result?.getAsJsonPrimitive("pointRemaining")!!.asInt.toString()*/
+                    /*textView_point_used.text =
+                        result?.getAsJsonPrimitive("pointUsed")!!.asInt.toString()*/
                     textView_point_remaining_predict.text =
                         result?.getAsJsonPrimitive("pointRemaining")!!.asInt.toString()
 
@@ -310,13 +312,13 @@ class OrderInfo : AppCompatActivity() {
                     val result = response.body()?.getAsJsonObject("result")
 
                     textView_productName.text = result?.getAsJsonPrimitive("productName")!!.asString
-                    textView_companyName.text = result?.getAsJsonPrimitive("companyName")!!.asString
+                    /*textView_companyName.text = result?.getAsJsonPrimitive("companyName")!!.asString*/
                     textView_price.text = result?.getAsJsonPrimitive("price")!!.asInt.toString()
-                    textView_gpa.text = result?.getAsJsonPrimitive("gpa")!!.asInt.toString()
-                    textView_ranking.text = result?.getAsJsonPrimitive("ranking")!!.asInt.toString()
-                    textView_review.text = result?.getAsJsonPrimitive("review")!!.asInt.toString()
-                    textView_deliveryCost.text =
-                        result?.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()
+                 /*   textView_gpa.text = result?.getAsJsonPrimitive("gpa")!!.asInt.toString()
+                    textView_ranking.text = result?.getAsJsonPrimitive("ranking")!!.asInt.toString()*/
+                    /*textView_review.text = result?.getAsJsonPrimitive("review")!!.asInt.toString()*/
+                    /*textView_deliveryCost.text =
+                        result?.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()*/
 
 
 /*

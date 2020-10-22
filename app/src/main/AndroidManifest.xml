@@ -14,9 +14,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".MyQuestionActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".NoticeListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OrderDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyOrderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyReviewActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".FindAddress" />
-
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/AppTheme.NoActionBar" />

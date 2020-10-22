@@ -85,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="NOW"
+                        android:text="홈"
                         android:textColor="@color/black"
                         android:textSize="15dp"
                         android:textStyle="bold" />
@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
-                        android:text="먹다 쇼핑"
+                        android:text="신상"
                         android:textAlignment="center"
                         android:textColor="@color/grayText"
                         android:textSize="15dp"
@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
-                        android:text="이벤트"
+                        android:text="베스트"
                         android:textAlignment="center"
                         android:textColor="@color/grayText"
                         android:textSize="15dp"
@@ -141,6 +141,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="추천순 ▼ "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ViewBottomOfTopContainer"/>
@@ -156,6 +157,7 @@
                 android:id="@+id/bottom_navi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:itemTextColor="@color/black"
                 android:background="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:menu="@menu/bottom_navigation_item" />

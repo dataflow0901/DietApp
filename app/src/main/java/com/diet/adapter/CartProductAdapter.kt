@@ -3,6 +3,7 @@ package com.diet.adapter
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,11 @@ import com.diet.ProductInfo
 import com.diet.R
 import com.diet.model.OrderDTO
 import com.diet.model.ProductDTO
+import kotlinx.android.synthetic.main.item_cart_list.view.*
 import kotlinx.android.synthetic.main.item_category_list.view.*
+import kotlinx.android.synthetic.main.item_category_list.view.companyName
+import kotlinx.android.synthetic.main.item_category_list.view.price
+import kotlinx.android.synthetic.main.item_category_list.view.productName
 import java.util.*
 
 class CartProductAdapter(val context: Context, private val productList: ArrayList<ProductDTO>) :
@@ -50,11 +55,12 @@ class CartProductAdapterHolder(itemView: View, context: Context) :
     fun setListData(productList: ProductDTO) {
         itemView.companyName.text = productList.companyName
         itemView.productName.text = productList.productName
-        itemView.qty.text = productList.qty.toString()
+        itemView.cart_company_name.text = productList.companyName
+/*        itemView.qty.text = productList.qty.toString()*/
         itemView.price.text = productList.price.toString()
-        itemView.unit.text = productList.unit
-        itemView.gpa.text = productList.gpa.toString()
-        itemView.review.text = productList.review.toString()
+/*        itemView.unit.text = productList.unit*/
+/*        itemView.gpa.text = productList.gpa.toString()*/
+      /*  itemView.review.text = productList.review.toString()*/
 
 
         itemView.setOnClickListener {

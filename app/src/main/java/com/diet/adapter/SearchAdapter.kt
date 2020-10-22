@@ -1,57 +1,52 @@
 package com.diet.adapter
 
+import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.diet.R
+import com.diet.fragmentView.SearchFragment
+import com.diet.model.ProductDTO
 import com.diet.model.SearchDTO
+import kotlinx.android.synthetic.main.item_myorder.view.*
 import java.util.ArrayList
 
-/*class SearchAdapter( val context: Context, private val searchList: ArrayList<SearchDTO>) : BaseAdapter(){
-     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-         val view:View = LayoutInflater.from(context).inflate(R.layout.search_item_layout, null)
+class SearchAdapter(val context: Context, private val searchList: ArrayList<ProductDTO>) :
+    BaseAdapter() {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val view: View = LayoutInflater.from(context).inflate(R.layout.search_item_layout, null)
+        val search_text: TextView = view.findViewById(R.id.search_text)
+        val searchList = searchList[position]
 
-         var search_text : TextView = view.findViewById(R.id.search_text)
-         val search = searchList[position]
-         search_text.text = search.search_item
-         return view
-     }
+        search_text.text = searchList.productName
 
-     override fun getItem(position: Int): Any {
-         return searchList[position]
-     }
-
-     override fun getItemId(position: Int): Long {
-         TODO("Not yet implemented")
-     }
-
-     override fun getCount(): Int {
-         return searchList.size
-     }
-
-
-
-}*/
-
-class SearchAdapter(val searchList: ArrayList<SearchDTO>):RecyclerView.Adapter<SearchAdapter.SearchViewHolder>(){
-     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.SearchViewHolder {
-        val view:View = LayoutInflater.from(parent.context).inflate(R.layout.search_item_layout, parent,false)
-
-         return SearchViewHolder(view)
+        return view
     }
 
-    override fun getItemCount(): Int {
-       return searchList.size
+    override fun getItem(position: Int): Any {
+        return searchList[position]
     }
 
-    override fun onBindViewHolder(holder: SearchAdapter.SearchViewHolder, position: Int) {
-       holder.search_item.text = searchList.get(position).search_item
+    override fun getItemId(position: Int): Long {
+        return 0
     }
 
-    class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var search_item = itemView.findViewById<TextView>(R.id.search_text) //검색어 내용
+    override fun getCount(): Int {
+        return searchList.size
+    }
 
+    class SearchViewHolder(itemView: View, context: Context) : RecyclerView.ViewHolder(itemView) {
+        val context = context
+        fun setData(searchList: ProductDTO) {
+
+            itemView.product_name.text = searchList.productName
+
+        }
     }
 }
+
+

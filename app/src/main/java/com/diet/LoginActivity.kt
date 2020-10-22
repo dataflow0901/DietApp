@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
         var find_id_tv = findViewById<TextView>(R.id.find_id_tv)
         var find_pwd_tv = findViewById<TextView>(R.id.find_pwd_tv)
         var no_signup = findViewById<TextView>(R.id.no_signup)
-        signup_btn.setOnClickListener {
+        signup_tv.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }

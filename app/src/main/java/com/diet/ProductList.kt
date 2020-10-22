@@ -66,7 +66,6 @@ class ProductList() : AppCompatActivity() {
         //메인화면에서 인기신제품 더보기로 들어왔을때
         else{
             getProductList()
-
         }
 
 

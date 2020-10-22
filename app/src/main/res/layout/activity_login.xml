@@ -97,24 +97,24 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/find_id_tv"
             app:layout_constraintTop_toBottomOf="@id/login_btn" />
+        <TextView
+            android:id="@+id/signup_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textColor="@color/grayText"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/find_id_tv"
+            app:layout_constraintTop_toBottomOf="@id/login_btn" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/signup_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="51dp"
-        android:background="@drawable/gray_radius_box"
-        android:text="회원가입"
-        android:textColor="@color/grayText"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/find_layout" />
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/no_signup"
         android:layout_width="0dp"
         android:layout_height="45dp"
@@ -125,6 +125,6 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signup_btn"  />
+        app:layout_constraintTop_toBottomOf="@id/find_layout"  />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

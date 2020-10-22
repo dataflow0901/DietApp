@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/order_date_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="주문 날짜"
+        android:visibility="gone"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_num_detail"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/order_num_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        android:text="회사이름"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_date_detail" />
+
+    <TextView
+        android:id="@+id/qustion_product"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="right|center"
+        android:text="문의하기 "
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/order_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/order_gray"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/order_num_detail" />
+
+    <ImageView
+        android:id="@+id/order_product_image"
+        android:layout_width="50dp"
+        android:layout_height="62dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/diet_shake_ico_my"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_gray" />
+
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="상품명"
+        app:layout_constraintStart_toEndOf="@+id/order_product_image"
+        app:layout_constraintTop_toBottomOf="@+id/order_gray" />
+
+
+    <TextView
+        android:id="@+id/product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="금액"
+        app:layout_constraintStart_toEndOf="@+id/order_product_image"
+        app:layout_constraintTop_toBottomOf="@+id/product_name" />
+
+
+    <TextView
+        android:id="@+id/product_delivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="배송상태"
+        app:layout_constraintStart_toEndOf="@+id/order_product_image"
+        app:layout_constraintTop_toBottomOf="@+id/product_price" />
+
+    <TextView
+        android:id="@+id/order_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="옵션"
+        app:layout_constraintStart_toEndOf="@+id/order_product_image"
+        app:layout_constraintTop_toBottomOf="@+id/product_delivery" />
+
+    <Button
+        android:id="@+id/order_complete_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/gray_radius_box"
+        android:text="구매확정"
+        app:layout_constraintEnd_toStartOf="@+id/delevery_info_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_unit" />
+
+    <Button
+        android:id="@+id/delevery_info_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/gray_radius_box"
+        android:text="배송조회"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/order_complete_btn"
+        app:layout_constraintTop_toBottomOf="@+id/order_unit" />
+
+    <Button
+        android:id="@+id/product_change_require"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/gray_radius_box"
+        android:text="교환요청"
+        app:layout_constraintEnd_toStartOf="@+id/product_return_require"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_complete_btn" />
+
+    <Button
+        android:id="@+id/product_return_require"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/gray_radius_box"
+        android:text="반품요청"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/product_change_require"
+        app:layout_constraintTop_toBottomOf="@+id/delevery_info_btn" />
+
+    <View
+        android:id="@+id/order_gray2"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/product_return_require" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

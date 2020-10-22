@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintTop_toBottomOf="parent"
+    tools:context=".fragmentView.ReviewWriteFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <Button
+            android:id="@+id/write_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="리뷰쓰기"
+            android:background="@drawable/gray_radius_box"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/product_review_container"
+            android:layout_width="389dp"
+            android:layout_height="224dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/black_color_non_radius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/write_review"
+            app:layout_constraintWidth_percent="0.92">
+
+            <TextView
+                android:id="@+id/textView_product_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_horizontal"
+                android:text="리뷰"
+                app:layout_goneMarginLeft="20dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="1" />
+
+            <TextView
+                android:id="@+id/textView_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginLeft="13dp"
+                android:gravity="center_horizontal"
+                android:text="1,000"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="1" />
+
+            <TextView
+                android:id="@+id/product_review_id1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:text="Steveyou"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView_product_review"
+                app:layout_constraintTop_toBottomOf="@id/textView_product_review"
+
+                />
+
+            <TextView
+                android:id="@+id/product_review_content1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="처음 이용했는데, 다이어트에 매우 효과가 크가 앞으로 더 많이 이용할게요. 처음 이용했는데, 다이어트에 매우 효과가 크가 앞으로 더 많이 이용할게요."
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_review_id1" />
+
+            <View
+                android:id="@+id/view_grey"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/gray"
+                app:layout_constraintTop_toBottomOf="@+id/product_review_content1" />
+
+            <TextView
+                android:id="@+id/product_review_id2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                android:text="DataFlow"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView_product_review"
+                app:layout_constraintTop_toBottomOf="@+id/view_grey"
+                app:layout_constraintWidth_percent="1" />
+
+            <TextView
+                android:id="@+id/product_review_content2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="처음 이용했는데, 다이어트에 매우 효과가 크가 앞으로 더 많이 이용할게요. 처음 이용했는데, 다이어트에 매우 효과가 크가 앞으로 더 많이 이용할게요."
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_review_id2"
+                app:layout_constraintVertical_bias="0.12"
+                app:layout_constraintWidth_percent="1" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -31,7 +31,6 @@ class MypageAdapter(val mypageList:ArrayList<MypageDTO>) : RecyclerView.Adapter<
         var address_change= itemView.findViewById<TextView>(R.id.address_change)
         var myreview = itemView.findViewById<TextView>(R.id.myreview)
         var my_product_qna = itemView.findViewById<TextView>(R.id.my_product_qna)
-        var one_to_one_qna = itemView.findViewById<TextView>(R.id.one_to_one_qna)
         var notice = itemView.findViewById<TextView>(R.id.notice)
         var FAQ = itemView.findViewById<TextView>(R.id.FAQ)
         var service_center = itemView.findViewById<TextView>(R.id.service_center)

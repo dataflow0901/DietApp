@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentView.NoticeDeatailFragment">
+
+  <TextView
+      android:id="@+id/notice_detail_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textStyle="bold"
+      android:textColor="@color/black"
+      android:textSize="20dp"
+      android:layout_margin="10dp"
+      android:text="공지사항 제목"/>
+
+    <TextView
+        android:id="@+id/notice_detail_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="작성날짜"/>
+
+    <View
+        android:id="@+id/order_gray"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray"
+        />
+
+    <TextView
+        android:id="@+id/notice_detatil_content"
+        android:paddingTop="10dp"
+        android:paddingHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:text="공지사항 내용"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

@@ -1,33 +1,55 @@
 package com.diet.fragmentView
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.diet.R
-import kotlinx.android.synthetic.main.fragment_my_page.*
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.diet.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MyPageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MyPageFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view : View = inflater.inflate(R.layout.fragment_my_page, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view: View = inflater.inflate(R.layout.mypage_item, container, false)
 
+
+        val review_image = view.findViewById<TextView>(R.id.myreview)
+        val my_order_list = view.findViewById<TextView>(R.id.my_order_list)
+        val notice = view.findViewById<TextView>(R.id.notice)
+        val myreview = view.findViewById<TextView>(R.id.myreview)
+        val my_product_qna = view.findViewById<TextView>(R.id.my_product_qna)
+        my_product_qna.setOnClickListener {
+            val nextIntent = Intent(context, MyQuestionActivity::class.java)
+            startActivity(nextIntent)
+        }
+        myreview.setOnClickListener {
+            val nextIntent = Intent(context, MyReviewActivity::class.java)
+            startActivity(nextIntent)
+        }
+        notice.setOnClickListener {
+            val nextIntent = Intent(context, NoticeListActivity::class.java)
+            startActivity(nextIntent)
+        }
+/*
+        cart_page.setOnClickListener {
+            val nextIntent = Intent(context, CartInfo::class.java)
+            startActivity(nextIntent)
+        }*/
+
+        my_order_list.setOnClickListener {
+            val nextIntent = Intent(context, MyOrderActivity::class.java)
+            startActivity(nextIntent)
+        }
+        /*myreview.setOnClickListener {
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            if (transaction != null) {
+                transaction.replace(R.id.frameLayout, ReviewWriteFragment())
+                transaction.disallowAddToBackStack()
+                transaction.commit()
+            }
+        }*/
         return view
     }
 

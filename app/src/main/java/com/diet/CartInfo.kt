@@ -125,7 +125,7 @@ class CartInfo() : AppCompatActivity() {
                         item.deliveryCost = json.getAsJsonPrimitive("deliveryCost")!!.asInt
 
 
-                        accountList.add(item)
+                         accountList.add(item)
 
                     }
 

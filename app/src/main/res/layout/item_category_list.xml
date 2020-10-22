@@ -76,7 +76,6 @@
             android:textColor="@color/black"
             android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/gpa"
-
             app:layout_constraintTop_toTopOf="@id/gpa" />
 
 
@@ -128,9 +127,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15dp"
-
             app:layout_constraintStart_toEndOf="@id/delimeter"
-
             app:layout_constraintTop_toTopOf="@id/qty" />
 
         <TextView

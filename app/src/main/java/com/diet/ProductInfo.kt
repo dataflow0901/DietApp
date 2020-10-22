@@ -2,22 +2,28 @@ package com.diet
 
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+import com.diet.adapter.ViewPagerAdapter
+import com.diet.fragmentView.ProductInquiryFragment
+import com.diet.fragmentView.ReviewWriteFragment
 import com.diet.model.OrderDTO
 import com.diet.model.ProductDTO
 import com.diet.model.retrofits.OrderApiRetrofit
 import com.diet.model.retrofits.ProductApiRetrofit
 import com.diet.utils.Utils
+import com.google.android.material.tabs.TabLayout
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_product.*
-import org.jetbrains.anko.textColor
-import org.jetbrains.anko.textColorResource
+import kotlinx.android.synthetic.main.fragment_status.*
+import org.jetbrains.anko.support.v4.viewPager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,7 +31,6 @@ import java.io.IOException
 
 
 class ProductInfo : AppCompatActivity() {
-
 
     //val companyName = view.findViewById<TextView>(R.id.companyName)
 
@@ -46,19 +51,22 @@ class ProductInfo : AppCompatActivity() {
     var review = 0
     var deliveryCost = 0
 
+    lateinit var tab_layout : TabLayout
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
-        product_info_scroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+
+        tab_layout = findViewById(R.id.tab_layout)
+        Tablayout_item()
+
+       /* product_info_scroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (scrollY < 500){
                 textView_gpa.setTextColor(Color.parseColor("#bbbbbb"))
                 product_review_content1.setTextColor(Color.parseColor("#bbbbbb"))
             }
-        }
+        }*/
 
         if (intent.hasExtra("salesStandCode")) {
 
@@ -129,19 +137,26 @@ class ProductInfo : AppCompatActivity() {
             startActivity(intent)
 
         }
+       /* title_review.setOnClickListener {
+            val transaction = supportFragmentManager?.beginTransaction()
 
+                transaction.replace(R.id.frameLayout, ReviewWriteFragment())
+                transaction.disallowAddToBackStack()
+                transaction.commit()
+
+        }*/
 
         cartButton.setOnClickListener {
 
             addCart()
 
         }
-
+/*
         title_zzim.setOnClickListener {
 
             addZzim()
 
-        }
+        }*/
 
 
         cart_icon.setOnClickListener {
@@ -170,6 +185,15 @@ class ProductInfo : AppCompatActivity() {
 
     }
 
+    private fun Tablayout_item() {
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(ReviewWriteFragment(),"상품후기 ")
+        adapter.addFragment(ProductInquiryFragment(),"문의하기")
+        change_tab.adapter = adapter
+        tab_layout.setupWithViewPager(change_tab)
+
+    }
+
 
     private fun getProduct() {
 
@@ -193,11 +217,11 @@ class ProductInfo : AppCompatActivity() {
 
                     textView_productName.text = result?.getAsJsonPrimitive("productName")!!.asString
                     textView_companyName.text = result?.getAsJsonPrimitive("companyName")!!.asString
-                    textView_price.text = result?.getAsJsonPrimitive("price")!!.asInt.toString()
+                   /* textView_price.text = result?.getAsJsonPrimitive("price")!!.asInt.toString()
                     textView_gpa.text = result?.getAsJsonPrimitive("gpa")!!.asInt.toString()
-                    textView_ranking.text = result?.getAsJsonPrimitive("ranking")!!.asInt.toString()
-                    textView_review.text = result?.getAsJsonPrimitive("review")!!.asInt.toString()
-                    textView_deliveryCost.text =
+                    textView_ranking.text = result?.getAsJsonPrimitive("ranking")!!.asInt.toString()*/
+                   /* textView_review.text = result?.getAsJsonPrimitive("review")!!.asInt.toString()*/
+                    /*textView_deliveryCost.text =*/
                         result?.getAsJsonPrimitive("deliveryCost")!!.asInt.toString()
 
 

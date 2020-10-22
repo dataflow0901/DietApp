@@ -4,24 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/profile"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:background="@color/black"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:padding="10dp"
         android:text="유저이름"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/myinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:padding="10dp"
+        android:text="내정보 "
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
@@ -29,34 +34,35 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/user_name" />
+        app:layout_constraintTop_toBottomOf="@+id/myinfo" />
+
 
     <TextView
-        android:id="@+id/myinfo"
+        android:id="@+id/point"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="내정보"
+        android:text="포인트"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/grayview" />
-
-    <View
-        android:id="@+id/grayview2"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/myinfo" />
 
     <TextView
         android:id="@+id/cupon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="적립금/쿠폰"
+        android:text="쿠폰"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/grayview2" />
+        app:layout_constraintTop_toBottomOf="@+id/point" />
+
+    <View
+        android:id="@id/grayview2"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/cupon" />
 
     <TextView
         android:id="@+id/my_order_list"
@@ -66,14 +72,14 @@
         android:text="주문내역"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/cupon" />
+        app:layout_constraintTop_toBottomOf="@+id/grayview2" />
 
     <TextView
         android:id="@+id/address_change"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="배송지 관리"
+        android:text="배송지관리"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/my_order_list" />
@@ -83,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="상품 후기"
+        android:text="리뷰"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/address_change" />
@@ -93,27 +99,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="상품 문의"
+        android:text="문의"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/myreview" />
 
-    <TextView
-        android:id="@+id/one_to_one_qna"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="1:1문의"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/my_product_qna" />
 
     <View
         android:id="@+id/grayview3"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/one_to_one_qna" />
+        app:layout_constraintTop_toBottomOf="@+id/my_product_qna" />
 
     <TextView
         android:id="@+id/notice"
@@ -154,4 +151,17 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/service_center" />
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="start|center"
+            android:padding="10dp"
+            android:background="@color/gray"
+            android:text="버전정보"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notification" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

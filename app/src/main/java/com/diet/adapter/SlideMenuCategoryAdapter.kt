@@ -132,7 +132,6 @@ class SlideMenuCategoryAdapterHolder(itemView: View, context: Context) :
                     try {
 
 
-
                         val errorMessage = response.errorBody()!!.string()
                         Log.d("getProductList", errorMessage)
                     } catch (e: IOException) {

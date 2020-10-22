@@ -48,7 +48,12 @@
             android:text="추천 검색어" />
 
     </LinearLayout>
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/search_layout"
+        />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,12 +70,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_layout">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_recyclerview"
-            tools:listitem="@layout/search_item_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+
 
     </FrameLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,5 +25,6 @@ class ProductDTO {
     var category1Name : String? = ""
     var category2Code : String? = ""
     var category2Name : String? = ""
+    var keyword : String? = ""
 
 }

@@ -1,13 +1,18 @@
 package com.diet.fragmentView
 
 import android.annotation.SuppressLint
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +24,7 @@ import com.diet.model.retrofits.ProductApiRetrofit
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_product_list.*
 import kotlinx.android.synthetic.main.fragment_search.*
+import org.jetbrains.anko.sdk25.coroutines.onQueryTextListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,10 +44,27 @@ class SearchFragment : Fragment() {
         val recommend_search = view.findViewById<Button>(R.id.recommend_search)
         val search_area = view.findViewById<SearchView>(R.id.search_area)
 
+/*        var textView_product_name : TextView = view.findViewById(R.id.textView_product_name)*/
+
+       /* var bold_text : String =textView_product_name.text.toString()*/
 
         var searchList: ArrayList<SearchDTO> = arrayListOf()
+       search_area.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+           override fun onQueryTextSubmit(query: String?): Boolean {
+               search_product(query!!)
+               return true
+           }
 
-        search_product("다이어트 쉐이크")
+           override fun onQueryTextChange(newText: String?): Boolean {
+                      search_product(newText!!)
+                  /* if (newText == bold_text){
+                       val span =SpannableString(bold_text)
+                       span.setSpan(StyleSpan(Typeface.BOLD),bold_text.length)
+                   }*/
+            return true
+           }
+
+       })
 
 
         if (search_area.hasFocus()) {
@@ -77,7 +100,7 @@ class SearchFragment : Fragment() {
 //                        item.productCode = json?.getAsJsonPrimitive("productCode")!!.asString
                         item.productName = json?.getAsJsonPrimitive("productName")!!.asString
 //                        item.companyCode = json?.getAsJsonPrimitive("companyCode")!!.asString
-//                        item.companyName = json?.getAsJsonPrimitive("companyName")!!.asString
+                        item.companyName = json?.getAsJsonPrimitive("companyName")!!.asString
 //                        item.qty = json?.getAsJsonPrimitive("ranking")!!.asInt
 //                        item.unit = json?.getAsJsonPrimitive("unit")!!.asString
 //                        item.price = json?.getAsJsonPrimitive("price")!!.asInt
@@ -89,7 +112,7 @@ class SearchFragment : Fragment() {
                         searchList.add(item)
                     }
 
-                    val searchAdapter = SearchAdapter(requireContext(), searchList)
+                    val searchAdapter = SearchAdapter(requireContext(), searchList,searchKeyWord)
                     recyclerView.adapter = searchAdapter
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                 }

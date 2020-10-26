@@ -18,11 +18,19 @@
         android:src="@drawable/foodiamge1"
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/zzimbtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/zzim_image"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/zzim_image"/>
+
     <TextView
         android:layout_weight="1"
         android:id="@+id/zzim_product_name"
         android:layout_marginTop="10dp"
-        android:gravity="center"
+        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +40,8 @@
     <TextView
         android:layout_weight="1"
         android:id="@+id/zzim_product_price"
-        android:gravity="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"

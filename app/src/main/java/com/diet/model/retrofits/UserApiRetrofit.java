@@ -2,8 +2,7 @@ package com.diet.model.retrofits;
 
 import android.content.Context;
 
-import com.diet.model.services.OrderApiRetrofitService;
-import com.diet.model.services.SearchApiRetrofitService;
+import com.diet.model.services.UserApiRetrofitService;
 import com.diet.utils.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,15 +10,15 @@ import com.google.gson.GsonBuilder;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SearchApiRetrofit {
+public class UserApiRetrofit {
 
-    private static SearchApiRetrofit instance = null;
+    private static UserApiRetrofit instance = null;
 
-    public static SearchApiRetrofit getInstance(Context context) {
+    public static UserApiRetrofit getInstance(Context context) {
         if (instance == null) {
-            synchronized (SearchApiRetrofit.class) {
+            synchronized (UserApiRetrofit.class) {
                 if (instance == null) {
-                    instance = new SearchApiRetrofit(context.getApplicationContext());
+                    instance = new UserApiRetrofit(context.getApplicationContext());
                 }
             }
         }
@@ -29,9 +28,9 @@ public class SearchApiRetrofit {
     private final Context context;
     private Gson gson;
     private Retrofit retrofit;
-    private final SearchApiRetrofitService service;
+    private final UserApiRetrofitService service;
 
-    private SearchApiRetrofit(Context context) {
+    private UserApiRetrofit(Context context) {
         this.context = context;
 
         gson = new GsonBuilder()
@@ -42,17 +41,17 @@ public class SearchApiRetrofit {
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(Utils.getCurrentURL(this.context)+"/product/")
+                .baseUrl(Utils.getCurrentURL(this.context)+"/user/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         System.out.println("step ******************************************************** retro - 002");
 
-        service = retrofit.create(SearchApiRetrofitService.class);
+        service = retrofit.create(UserApiRetrofitService.class);
 
         System.out.println("step ******************************************************** retro - 003");
 
     }
 
-    public SearchApiRetrofitService getService() { return service; }
+    public UserApiRetrofitService getService() { return service; }
 }

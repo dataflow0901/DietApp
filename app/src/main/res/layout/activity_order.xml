@@ -603,23 +603,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/point_info" />
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/payment_info"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view_grey5"
-                app:layout_constraintVertical_bias="0"
-
-                app:layout_constraintWidth_percent="0.92">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <TextView
                     android:id="@+id/textView_payment_info"
                     android:layout_width="wrap_content"
@@ -635,46 +618,50 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_grey5"
                     app:layout_constraintVertical_bias="0."
                     app:layout_constraintWidth_percent="1" />
 
-                <TextView
-                    android:id="@+id/title_payment_card"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/payment_layout"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginLeft="0dp"
-                    android:gravity="center_horizontal"
-                    android:text="신용/체크 카드"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_payment_info"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.4"
-                    app:layout_constraintWidth_percent="1" />
+                    >
+                    <Button
+                        android:id="@+id/button_naver"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="네이버페이로 결제하기"
+                        />
+                    <Button
+                        android:id="@+id/button_kakao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="카카오페이로 결제하기"
+                        />
+                    <Button
+                        android:id="@+id/button_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="신용/체크카드로 결제하기"
+                        />
+                    <Button
+                        android:id="@+id/button_no_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="무통장입금"
+                        />
+                    <Button
+                        android:id="@+id/button_cellPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="휴대폰 결제하기"
+                        />
 
-                <TextView
-                    android:id="@+id/textView_payment_card"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginLeft="0dp"
-                    android:gravity="center_horizontal"
-                    android:text="BC 카드"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.4"
-                    app:layout_constraintWidth_percent="1" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
 
             <View
@@ -683,7 +670,7 @@
                 android:layout_height="8dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/gray"
-                app:layout_constraintTop_toBottomOf="@+id/payment_info" />
+                app:layout_constraintTop_toBottomOf="@+id/payment_layout" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -695,13 +682,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view_grey6"
                 app:layout_constraintVertical_bias="0"
-
                 app:layout_constraintWidth_percent="0.92">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView_final_amount_info"

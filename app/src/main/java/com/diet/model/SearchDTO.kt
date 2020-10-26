@@ -1,7 +1,7 @@
 package com.diet.model
 
 class SearchDTO(){
-   var product_code:String?=""
+    var product_code:String?=""
     var product_name:String?=""
     var company_code:String?=""
     var company_name:String?=""
